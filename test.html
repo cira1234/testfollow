@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form id="uploadForm" >
+        <input type="text" name="name" placeholder="Name">
+        <input type="file" name="file">
+        <button type="submit" name="submit">Upload</button>
+    </form>
+        <div id="result">
+
+        </div>
+  
+</body>
+</html>
+<script>
+    $(document).ready(function() {
+    $('#uploadForm').submit(function(e) {
+        e.preventDefault();
+        var formData=new FormData(this);
+
+        $.ajax({
+            url:'saveimg.php',
+            method:'POST',
+            data:formData,
+            processData:false,
+            contentType:false,
+            success: function(response){
+                $('#result').html('Response:'+response.message);
+            },
+            error:function(xhr,status,error){
+                console.log('Error',error);
+            }
+        });
+    });
+});
+// $(document).ready(function(){
+//     $("#uploadForm").on('submit',function(e){
+//         e.preventDefault();
+//         $.ajax({
+//             type:'POST',
+//             url:'saveimg.php',
+//             data:new FormData(this),
+//             contentType:false,
+//             cache:false,
+//             processData:false,
+//             beforeSend:function(){
+//                 $('#uploadStatus').html('<img src="img/app.png>');
+//             },
+//             success:function(data){
+//                 $('#uploadForm')[0].reset();
+//                 $('uploadStatus').html('<span style="color:#28A74B;">Image upload complete</span>');
+//                 $('.gallery').html(data);
+//             },
+//         })
+//     });
+// });
+
+
+$('#fileinput').change(function(){
+    var filelength=this.files.length;
+    var match=["image/jpeg","image/png","image/gif"];
+    var i;
+    for(i=0;i<filelength;i++){
+        var file=this.files[i];
+        var imagefile=file.type;
+        if(!((imagefile==match[0] || (imagefile==match[1] || imagefile==match[3])))){
+            alert('plase select file a valid image JPEG,JPG,PNG,GIF');
+            $("#fileinput").val('');
+            return false;
+        }
+    }
+})
+</script>

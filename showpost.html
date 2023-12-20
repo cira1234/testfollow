@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@7/fonts/Anakotmai/Anakotmai.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="domain.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="carddata.js"></script> -->
+    <link href="sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>All Post</title>
+    
+    
+
+</head>
+<body>
+  <style>
+    .dropdown_menu{
+       height: 0;
+       display: none;
+       position: absolute;
+       right: 2rem;
+       top:60px;
+       margin-right: 85px;
+       width: 150px;
+       background: rgb(30, 240, 250,0.1);
+       /* background: rgb(255, 255, 255,0.1); */
+       /* background: red; */
+       backdrop-filter: blur(15px);
+       border-radius: 20px;
+       overflow: hidden;
+       transition: height 0.2s cubic-bezier(0.175,0.885,0.32,1.275);
+    }
+    .dropdown_menu.open{
+       height: 240px;
+   }
+   .toggle_btn{
+       display: none;
+       position: absolute;
+       right:30px;
+       margin-top: -30px;
+   }
+   
+   </style>
+<style>
+    .margintext{
+        margin-left: -10px;
+    }
+    .card2::-webkit-scrollbar{
+        width: 0;
+    }
+ 
+    .card2{
+        width:50%;
+    /* margin-top: 5rem; */
+    /* margin-left: 10rem; */
+    height:500px;
+    margin: 50px;
+    box-shadow: 5px 5px 10px gray;
+    border-radius: 20px;
+    overflow: auto;
+    margin-left: 5px;
+    }
+
+        .profile{
+
+  height: 35px;
+  width: 35px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+        }       
+    .container2{
+        /* background-color: aqua; */
+        /* margin-left: 23rem; */
+        margin-left: 15rem;
+    }
+    .container3{
+        /* background-color: aqua; */
+        /* margin-left: 23rem; */
+       margin-left: 20px;
+    }
+    .card3{
+        width:60%;
+    /* margin-top: 5rem; */
+    /* margin-left: 10rem; */
+    height:700px;
+    margin: 50px;
+    box-shadow: 5px 5px 10px gray;
+    border-radius: 20px;
+    overflow: auto;
+}
+.card3::-webkit-scrollbar{
+        width: 0;
+    }
+.img1{
+    width: 100%;
+        height: 345px;
+     
+        object-fit: cover;
+     }
+
+.check{
+  background:#0066ff;
+}
+.marginbutton{
+    margin-top: 20px;
+}
+.noimg{
+    width:100%;
+    height: 100px;
+    background: white;
+}
+.noimg3{
+    margin-top: 200px;
+}
+@media(max-width:992px){
+    .sidebar{
+         display:none;
+     }
+     .header{
+        margin-left: -200px;
+     }
+     .card3{
+        width:280px;
+        margin-left: -420px;
+     }
+     .intro{
+        width: 310px;
+     }
+     .toggle_btn{
+        position: absolute;
+    right: 20px;
+    margin-top: -25px;
+    }
+    .dropdown_menu{
+      margin-right: -20px;
+        display: block;
+    }
+    .toggle_btn{
+        display: block;
+    }
+    .text_dropdown{
+        margin-left: 40px;
+    }
+    .check{
+      background: orange;
+    }
+    }
+</style>
+
+    
+<div class="wrapper">
+
+<div class="sidebar">
+
+    <h3>Dasboard</h3>
+    <ul>
+      <li><a href="meprofile.html"  style="text-decoration:none"><i class="fas fa-home"></i>Home</a></li>
+      <li><a href="profileset.html" style="text-decoration:none" ><i class="fas fa-user"></i>Profile</a></li>
+      <li><a href="showpost.html" style="text-decoration:none" class="check"><i class="fas fa-address-card"></i>Post</a></li>
+      <li><a href="learn.html" style="text-decoration:none"><i  class="fas fa-graduation-cap"></i>Learn</a></li>
+      <li><a href="write.html" style="text-decoration:none"><i class="fas fa-pen"></i>Write</a></li>
+      <li><a href="showquizuser.html" style="text-decoration:none"  ><i  class="fas fa-chalkboard-teacher"></i>Quiz</a></li>
+      <li><a href="assistuser.html" style="text-decoration:none"  ><i  class="fas fa-chalkboard-teacher"></i>Assist</a></li>
+      <li><a onclick="logout()" style="text-decoration:none"><i class='fas fa-sign-out-alt'></i>Logout</a></li>
+    </ul>
+
+</div>
+<div class="main_content">
+    <div class="header">Edit or insert your post
+
+      <div class="toggle_btn">
+        <i class="fa-solid fa-bars " ></i>
+    </div>
+
+      <div class="dropdown_menu">
+        <div class="text_dropdown"> 
+        <li><a href="meprofile.html"  style="text-decoration:none"  ><i class="fas fa-home"></i>Home</a></li>
+        <li ><a href="profileset.html" style="text-decoration:none"><i class="fas fa-user"></i>Profile</a></li>
+        <li><a href="showpost.html" style="text-decoration:none" class="check"><i class="fas fa-address-card"></i>Post</a></li>
+        <li><a href="learn.html" style="text-decoration:none"><i  class="fas fa-graduation-cap"></i>Learn</a></li>
+        <li><a href="write.html" style="text-decoration:none"><i class="fas fa-pen"></i>Write</a></li>
+        <li><a href="showquizuser.html" style="text-decoration:none" ><i  class="fas fa-chalkboard-teacher"></i>Quiz</a></li>
+        <li><a href="assistuser.html" style="text-decoration:none"  ><i  class="fas fa-chalkboard-teacher"></i>Assist</a></li>
+        <li><a onclick="logout()" style="text-decoration:none"><i class='fas fa-sign-out-alt'></i>Logout</a></li>
+    </div>
+    </div>
+    </div>
+<div class="container2"id="allpost">
+    <div class="card3" >
+        <img src="img/logo.png" class="img1" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Not found</h5>
+          <p class="card-text">please check post or internet</p>
+            
+        </div>
+        </div>
+      </div>
+
+      <div class="container2"id="allpost2">
+        <div class="card3" >
+            <img src="img/logo.png" class="img1" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Not found</h5>
+              <p class="card-text">please check post or internet</p>
+                
+            </div>
+            </div>
+          </div>
+
+      
+       
+     
+
+
+
+
+
+
+</div>
+
+</div>
+         
+</div>  
+    
+    
+</body>
+</html>
+<script>
+  const toggle_btn =document.querySelector('.toggle_btn')
+     const toggle_BtnIcon =document.querySelector('.toggle_btn i')
+     const dropdownmenu =document.querySelector('.dropdown_menu')
+     
+     toggle_btn.onclick = function(){
+         dropdownmenu.classList.toggle('open')
+         const isOpen=dropdownmenu.classList.contains('open')
+
+         toggle_BtnIcon.classList=isOpen
+          ? 'fa-solid fa-xmark'
+          : 'fa-solid fa-bars'
+     }
+</script>
+<script>
+ const emailvalue=localStorage.getItem('email-send');
+    const passvalue=localStorage.getItem('pass-send');
+    const idglobal=localStorage.getItem('idglobal-send');
+    console.log('this is showpost.html')
+    console.log(emailvalue)
+    console.log(passvalue)
+    console.log(idglobal)
+
+    if(emailvalue==null && passvalue==null){
+            window.location.href="./index.html";
+        }
+          else  if(emailvalue=='Admin69@gmail.com' && passvalue=='090165'){
+            window.location.href="./index.html";
+        }
+       console.log(emailvalue)
+        console.log(passvalue)
+       function logout(){
+        console.log('function logout');
+        localStorage.removeItem('email-send')
+        localStorage.removeItem('pass-send')
+        window.location.href="./index.html";
+
+       }
+       var url=localStorage.getItem('send-url')
+        var domainweb=localStorage.getItem('send-domain')
+
+
+    allpost()
+    function allpost(){
+       
+
+        console.log("this function showpostall")
+        console.log(emailvalue);
+        console.log(passvalue);
+        console.log(idglobal)
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectpost/"+idglobal);
+http.send();
+http.onreadystatechange=function(){
+    // if(this.status !="[]"){
+        
+        objects = JSON.parse(this.responseText);
+        var dataStore ='';
+        
+  
+    for(let object of objects){
+  
+        dataStore +=`
+    
+    <div class="card3" id="allpost">
+        <div id="noimg2">
+        <img width="100%"  height="500px" border-radius="50px" src="${["http://localhost/testfollow/"]+["imgpost/"]+object["img"]}">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">${object["section"]}</h5>
+          <p class="card-text">${object["textpost"]}</p>
+          <div class="container" align="center">
+          <button class="btn btn-primary">Favolite</button>
+          <button class="btn btn-primary" onclick="getid(${object["id_post"]})">Comment</button>
+          <button class="btn btn-primary" onclick="editpost(${object["id_post"]})">Edit post</button>
+          <button class="btn btn-primary"  onclick="deletepost(${object["id_post"]})">delete</button>
+        </div>
+        </div>
+      </div>
+
+      
+       
+     
+
+
+
+
+
+
+</div>
+
+</div>
+         
+</div>  
+     
+
+
+`;
+
+    }
+
+// }
+
+
+    document.getElementById("allpost").innerHTML=dataStore;
+    checknoimg()
+    
+    // document.getElementById("indexdata").innerHTML=dataStore;
+}
+
+}
+// allmenu()
+
+
+function deletepost(object){
+   
+    console.log(object)
+    const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/deletepost/"+object);
+    http.send();     
+    window.location.reload(true);
+}
+
+function checknoimg(){
+    const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectnoimg/"+idglobal);
+http.send();
+http.onreadystatechange=function(){
+    objects = JSON.parse(this.responseText);
+        var dataStore ='';
+        
+  
+    for(let object of objects){
+  
+        dataStore +=`
+    
+    <div class="card3" id="allpost2">
+        <div class="noimg">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">${object["section"]}</h5>
+          <p class="card-text">${object["textpost"]}</p>
+          <div class="container" align="center">
+            <div class="noimg3">
+        </div>
+          <button class="btn btn-primary">Favolite</button>
+          <button class="btn btn-primary" onclick="getid(${object["id_post"]})">Comment</button>
+          <button class="btn btn-primary" onclick="editpost(${object["id_post"]})">Edit post</button>
+          <button class="btn btn-primary"  onclick="deletepost(${object["id_post"]})">delete</button>
+        </div>
+        </div>
+      </div>
+
+      
+       
+     
+
+
+
+
+
+
+</div>
+
+</div>
+         
+</div>  
+     
+
+
+`;
+
+    }
+
+// }
+
+
+    document.getElementById("allpost2").innerHTML=dataStore;
+    
+    // document.getElementById("indexdata").innerHTML=dataStore;
+}
+
+}
+   
+
+
+
+function editpost(object){
+    console.log("this is function editpost");
+    console.log(object);
+
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+      
+               
+              <div class="form-floating mb-3" class="inputemail">
+                  <input type="text" class="form-control" id="section2" name="section" class="inputemail">
+                  <label for="floatingInput">Write Section</label>
+                </div>
+        
+        
+                <div class="form-floating  mb-3">
+                <textarea type="text" class="form-control w-100 " id="question2" name="question" class="inputpassword"></textarea>
+                <label for="floatingPassword">Write your Question</label>
+                </div>
+        
+                   
+                      <button class="btn btn-primary w-100 m-10" onclick="editimgpage(${object})">Go to Edit image post</button>
+                      <div class="marginbutton">
+                      <button class="btn btn-primary w-100 m-10" onclick="editprivacy(${object})">Go to Edit Privacy post</button>
+                    </div>
+                    
+                      <div class="marginbutton">
+                      <input type="submit"     onclick="editpostalert(${object})" class="btn btn-primary w-100" class="buttonlogin" name="btn-post" value="Edit Textpost" >
+                      </div>
+                  <!-- </form> -->
+                 
+          
+              <div id="result"></div>
+       </div>
+      
+      </div>
+      </div>
+      
+      
+          </div>
+             
+        
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+})
+
+}
+
+function getid(object){
+   console.log("function getid");
+   console.log("this is id post");
+   var idpost=object;
+   localStorage.setItem('send-idpost',idpost)
+   console.log(idpost);
+   console.log(emailvalue);
+   console.log(passvalue);
+
+     const http= new XMLHttpRequest();
+     http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/getid/"+emailvalue+"/"+passvalue);
+     http.send();
+     http.onreadystatechange=function(){
+      if (http.readyState == 4 && http.status == "200") {
+
+        let id1=JSON.parse(http.responseText);
+        // for(let id2 of id1){
+         let id2=id1[0];
+          console.log("this is id user");
+          console.log(id2["id_user"]);
+          
+                  comment(idpost,id2["id_user"]);
+
+        //  insertpost(id2["id_user"]);
+       
+        // }
+      
+        
+      }
+     
+      
+        };
+     
+ }
+
+
+
+
+function editimgpage(object){
+    console.log("this is function editimgpage");
+    console.log(object);
+
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+      
+  <form  method="post" enctype="multipart/form-data" id="uploadFile">
+      
+  
+
+      <input type="file" name="file"  id="files" multiple><br>
+      <input type="submit"     onclick="editimgpost(${object})" class="btn btn-primary w-100" class="buttonlogin" name="btn-post" value="Edit Image" >
+     
+  <!-- </form> -->
+ 
+
+</form>
+        <div id="result"></div>
+ </div>
+
+</div>
+</div>
+
+
+    </div>
+        
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+})
+
+}
+
+
+function editprivacy(object){
+    console.log("this is function editprivacy");
+    console.log(object);
+
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+      
+                    <button class="btn btn-primary w-100 m-10" onclick="setprivate(${object})">Private Post</button>
+                      <div class="marginbutton">
+                      <button class="btn btn-primary w-100 m-10" onclick="setpublic(${object})">Public Post</button>
+                    </div>
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+})
+
+}
+
+
+function setprivate(object){
+    const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/private/"+object);
+    http.send();
+    window.location.reload(true)
+       
+}
+
+function setpublic(object){
+    const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/public/"+object);
+    http.send();
+    window.location.reload(true)
+       
+}
+
+
+
+
+function imgcomment(object){
+    console.log("this is function editimgpage");
+    console.log(object);
+
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+      
+  <form  method="post" enctype="multipart/form-data" id="uploadFile">
+       
+  
+
+       <input type="file" name="file"  id="files" multiple><br>
+       <input type="submit" onclick="editimgpost(${object})" class="btn btn-primary w-100" class="buttonlogin" name="btn-post" value="Upload image" >
+      
+   <!-- </form> -->
+  
+
+</form>
+        <div id="result"></div>
+ </div>
+
+</div>
+</div>
+
+
+    </div>
+        
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+})
+
+}
+
+
+ function editpostalert(object){
+   window.location.reload(true);
+    console.log(object);
+    const section=document.getElementById('section2').value;
+ const question=document.getElementById('question2').value;
+    const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/editpost/"+section+"/"+question+"/"+object);
+    http.send();  
+ }
+
+
+
+ 
+ function comment(idpost,id2){
+    console.log('function  comment');
+    console.log(idpost);
+    console.log(id2);
+//    window.location.reload(true);
+//     console.log(object);
+//     const section=document.getElementById('section2').value;
+//  const question=document.getElementById('question2').value;
+//     const http= new XMLHttpRequest();
+//     http.open("GET","https://aggressive-tie-jay.cyclic.app/editpost/"+section+"/"+question+"/"+object);
+//     http.send();  
+
+
+
+
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+      
+             
+  <input type="submit"     onclick="writecomment(${idpost},${id2})" class="btn btn-primary w-100" class="buttonlogin" name="btn-post" value="Write Comment" >
+                </div>
+  
+                <div class="marginbutton">
+                    <input type="submit"     onclick="showcomment(${idpost})" class="btn btn-primary w-100" class="buttonlogin" name="btn-post" value="View Comment" >
+               
+            <!-- </form> -->
+           
+        
+ 
+        <div id="result"></div>
+ </div>
+
+</div>
+</div>
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+})
+
+ }
+
+
+
+ function editimgpost(object){
+//    
+    console.log(object);
+    const img=document.getElementById('files').value;
+ const namefilepost=img.split('\\').pop().split('/').pop();
+    const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/editimgpost/"+namefilepost+"/"+object);
+    http.send();  
+   
+ }
+
+ $(document).on('submit','#uploadFile',function(e){
+        e.preventDefault();
+       var formData = new FormData(this);
+        $.ajax({
+        method:"POST",
+        url: "saveimg2.php",
+        data:formData,
+        cache:false,
+        contentType: false,
+        processData: false,
+         beforeSend:function(){
+         $('button[type="submit"]').attr('disabled','disabled');
+       },
+        success: function(data){
+       
+        $('button[type="submit"]').removeAttr('disabled');
+       
+         $('#alertBox').html(data).fadeIn();
+         window.location.reload(true);
+      }
+           
+});
+
+      });   
+
+
+function writecomment(idpost,id2){
+    console.log('function insert writecomment');
+    console.log(idpost);
+    console.log(id2);
+//    window.location.reload(true);
+//     console.log(object);
+//     const section=document.getElementById('section2').value;
+//  const question=document.getElementById('question2').value;
+//     const http= new XMLHttpRequest();
+//     http.open("GET","https://aggressive-tie-jay.cyclic.app/editpost/"+section+"/"+question+"/"+object);
+//     http.send();  
+
+
+
+
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+      
+             
+        
+  <form  method="post" enctype="multipart/form-data" id="uploadFile">
+       
+  
+    <div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label"></label>
+  <textarea class="form-control" id="comment2" rows="3"></textarea>
+</div>
+
+                <input type="file" name="file"  id="files" multiple><br>
+                <input type="submit"     onclick="insertcomment(${idpost},${id2})" class="btn btn-primary w-100" class="buttonlogin" name="btn-post" value="Comment" >
+               
+            <!-- </form> -->
+           
+        
+        </form>
+        <div id="result"></div>
+ </div>
+
+</div>
+</div>
+
+
+    </div>
+        
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+})
+
+}
+
+function insertcomment(idpost,id2){
+
+
+ const comment=document.getElementById('comment2').value;
+ const img=document.getElementById('files').value;
+ const namefilepost=img.split('\\').pop().split('/').pop();
+
+ console.log('function insert comment');
+console.log(idpost);
+
+ console.log(id2);
+console.log(comment);
+console.log(namefilepost);
+
+
+
+
+if(namefilepost!=""){
+               const http= new XMLHttpRequest();
+               //  http.open("GET","https://aggressive-tie-jay.cyclic.app/selectuser");
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertcomment/"+comment+"/"+namefilepost+"/"+id2+"/"+idpost);
+                 http.send();
+                 window.location.reload(true);
+}
+
+else  if(namefilepost==""){
+                const http= new XMLHttpRequest();
+               //  http.open("GET","https://aggressive-tie-jay.cyclic.app/selectuser");
+               http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertcommentnoimg/"+comment+"/"+id2+"/"+idpost);
+                 http.send();
+                 window.location.reload(true);
+            }
+
+
+}
+
+
+
+
+
+//     function allcomment(){
+//         id_post2=localStorage.getItem('send-idpost')
+//         console.log("this function showpostall")
+//         console.log(emailvalue);
+//         console.log(passvalue);
+// const http= new XMLHttpRequest();
+// http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectcomment/"+id_post2);
+// http.send();
+// http.onreadystatechange=function(){
+//     if(this.status !="[]"){
+//         objects = JSON.parse(this.responseText);
+//         var dataStore ='';
+//     for(let object of objects){
+
+//         dataStore +=`
+//         <div class="container3"id="allcomment">
+//         <div class="card2" style="width: 18rem;">
+//     <div class="card-body">
+//         <img  width="20%"  height="50px" border-radius="50px" src="${[domainweb]+["imgpost/"]+object["imguser"]}" class="rounded-circle" alt="...">
+//       <h5 class="card-title" >${object['name']}</h5>
+//       <img  width="100%"  height="150px" border-radius="50px" src="${[domainweb]+["imgpost/"]+object["imgcom"]}" class="border border-3" alt="...">
+//       <div class="margintext">
+        
+//       <p class="card-text">${object['messege']}</p>
+//       <button class="btn btn-primary"  onclick="deletecomment(${object['id_com']})">delete</button>
+//       </div>
+//     </div>
+//   </div>
+     
+// </div>
+
+// `;
+
+
+//     }
+
+// }
+
+//     document.getElementById("allcomment").innerHTML=dataStore;
+
+//     // document.getElementById("indexdata").innerHTML=dataStore;
+// }
+
+// }
+
+
+
+function allcomment(){
+        id_post2=localStorage.getItem('send-idpost')
+        console.log("this function showpostall")
+        console.log(emailvalue);
+        console.log(passvalue);
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectcomment/"+id_post2);
+http.send();
+http.onreadystatechange=function(){
+    if(this.status !="[]"){
+        objects = JSON.parse(this.responseText);
+        var dataStore ='';
+    for(let object of objects){
+
+        dataStore +=`
+        <div class="container3"id="allcomment">
+        <div class="card2" style="width: 18rem;">
+    <div class="card-body">
+        <img  width="20%"  height="50px" border-radius="50px" src="${["http://localhost/testfollow/"]+["imgpost/"]+object["imguser"]}" class="rounded-circle" alt="...">
+      <h5 class="card-title" >${object['name']}</h5>
+     
+      <div class="margintext">
+        
+      <p class="card-text">${object['messege']}</p>
+      <img  width="100%"  height="150px" border-radius="50px" src="${["http://localhost/testfollow/"]+["imgpost/"]+object["imgcom"]}" class="border border-3" alt="...">
+      <button class="btn btn-primary"  onclick="deletecomment(${object['id_com']})">delete</button>
+      </div>
+    </div>
+  </div>
+     
+</div>
+
+`;
+
+
+    }
+
+}
+
+    document.getElementById("allcomment").innerHTML=dataStore;
+
+    // document.getElementById("indexdata").innerHTML=dataStore;
+}
+
+}
+
+
+
+function showcommentnoimg(){
+        id_post2=localStorage.getItem('send-idpost')
+        console.log("this function showpostall")
+        console.log(emailvalue);
+        console.log(passvalue);
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectcommentnoimg/"+id_post2);
+http.send();
+http.onreadystatechange=function(){
+    if(this.status !="[]"){
+        objects = JSON.parse(this.responseText);
+        var dataStore ='';
+    for(let object of objects){
+
+        dataStore +=`
+        <div class="container3"id="allcommentnoimg">
+        <div class="card2" style="width: 18rem;">
+    <div class="card-body">
+        <img  width="20%"  height="50px" border-radius="50px" src="${["http://localhost/testfollow/"]+["imgpost/"]+object["imguser"]}" class="rounded-circle" alt="...">
+      <h5 class="card-title" >${object['name']}</h5>
+      <div class="margintext">
+        
+      <p class="card-text">${object['messege']}</p>
+      <button class="btn btn-primary"  onclick="deletecomment(${object['id_com']})">delete</button>
+      </div>
+    </div>
+  </div>
+     
+</div>
+
+`;
+
+
+    }
+
+}
+
+    document.getElementById("allcommentnoimg").innerHTML=dataStore;
+
+    // document.getElementById("indexdata").innerHTML=dataStore;
+}
+
+}
+
+
+
+function showcomment(idpost){
+    allcomment(idpost);
+    showcommentnoimg(idpost)
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+  <div class="container3"id="allcomment">
+<div class="card2" style="width: 18rem;" >
+    <div class="card-body">
+       <div class="profile"></div> 
+      <h5 class="card-title" >Card title</h5>
+      <div class="margintext">
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container3"id="allcommentnoimg">
+<div class="card2" style="width: 18rem;" >
+    <div class="card-body">
+       <div class="profile"></div> 
+      <h5 class="card-title" >Card title</h5>
+      <div class="margintext">
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+</div>
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+})
+
+}
+
+
+function deletecomment(object){
+    console.log('function delete comment')
+    console.log(object)
+    const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/deletecomment/"+object);
+    http.send();  
+    window.location.reload(true);
+}
+
+</script>

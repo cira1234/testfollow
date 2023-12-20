@@ -1,0 +1,254 @@
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="login.css" rel="stylesheet">
+       <!-- <script src="checklogin.js"></script> -->
+      <!-- <script src="insertpost.js"></script> -->
+
+    <title>Login</title>
+  </head>
+  <body class="text-center">
+
+<style>
+   button{
+        position: relative;
+        background: #27022d;
+        color: white;
+        text-decoration: none;
+        letter-spacing: 1px;
+        border: 1px solid #000;
+        transition: 0.5s;
+        overflow: hidden;
+    }
+
+    button:hover{
+        background: #a41ee9;
+    }
+    button:nth-child(2):hover{
+        background: #ff3c7f;
+    }
+    button::before{
+
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,transparent,#fff,transparent);
+        transition: 0.5s;
+
+    }
+
+    button:hover::before{
+        left: 100%;
+    }
+    button:hover::after{
+        position: relative;
+        padding: 15px 30px;
+        margin: 10px;
+        background: #27022d;
+        color: #fff;
+        text-decoration: none;
+        letter-spacing:  1px;
+        border: 1px solid #000;
+        transition: 0.5s;
+        
+    }
+    button:hover{
+        background: #a41ee9;
+    }
+</style>
+
+    <!-- form and button -->
+    <!-- <form id="form"> -->
+    <div class="form-login">
+      <!-- <form onsubmit="return checkuserlogin()"> -->
+        <img src="img/logo.png" width="80%">
+        
+        <div class="form-floating mb-3" class="inputemail">
+          <input type="email" class="form-control" id="email2">
+          <label>Email address</label>
+        </div>
+
+
+        <div class="form-floating">
+        <input type="password" class="form-control w-100 " id="pass2" name="pass" class="inputpassword" >
+        <label>Password</label>
+        </div>
+
+
+        <div class="topbutton">
+         <button  onclick="sendvariable(), checkuserlogin(),getid()"   class="btn btn-primary w-100" class="buttonlogin">Login</button>
+        </div> 
+      <!-- </form> -->
+
+      <!-- </form> -->
+    </div>
+
+
+  </body>
+</html>
+<script>
+  
+    function sendvariable(){
+      // const click=document.querySelector('form');
+    const email=document.getElementById('email2');
+      const pass=document.getElementById('pass2');
+    // click.addEventListener('submit  ',function(e){
+    //   e.preventDefault();
+      
+      const emailvalue=email.value;
+      const passvalue=pass.value;
+      console.log(emailvalue)
+      localStorage.setItem('email-send',emailvalue);
+      localStorage.setItem('pass-send',passvalue);
+
+      // window.location.href="write.html";
+
+    // })
+    }
+    function checkuserlogin(){
+   
+
+   const email=document.getElementById('email2').value;
+   const pass=document.getElementById('pass2').value;
+   // const objects=JSON.parse(this.responseText);
+   // console.log(email);
+   // console.log(pass);
+
+   
+   i=0;
+                   
+   const http= new XMLHttpRequest();
+   http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/checklogin/"+email+"/"+pass);
+   http.send();
+   http.onreadystatechange=function(){
+
+       if(document.getElementById('email2').value=="" && document.getElementById('pass2').value==""){
+         
+           Swal.fire({
+               icon: 'warning',
+               title: 'Email and Password is empty ',
+               text: 'Please input email and password',
+               // footer: '<a href="">Why do I have this issue?</a>'
+             })
+   
+   
+               }
+       else if(document.getElementById('email2').value=="" ){
+           Swal.fire({
+               icon: 'warning',
+               title: 'Email is empty ',
+               text: 'Please input isemail ',
+               // footer: '<a href="">Why do I have this issue?</a>'
+             })
+   
+   
+               }
+   
+               else if(document.getElementById('pass2').value=="" ){
+                   Swal.fire({
+                       icon: 'warning',
+                       title: 'Password is empty ',
+                       text: 'Please input  password',
+                       // footer: '<a href="">Why do I have this issue?</a>'
+                     })
+           
+           
+                       }
+       else if(this.responseText =="admin"){
+           console.log("status="+this.responseText)
+           Swal.fire({
+               icon: 'success',
+               title: 'Welcome Admin Flutter Sapling',
+               text: 'Login complete',
+               // footer: '<a href="">Why do I have this issue?</a>'
+             }).then((result)=>{
+               if(result.isConfirmed){
+                   window.location.href="./menuadmin.html";
+
+               }
+             })
+           console.log("else Admin");
+       }
+       else  if(this.responseText =="false") {
+           console.log("status="+this.responseText)
+           console.log("else 1")
+               //    window.location.href='./meprofile.html';
+               // Swal.fire(objects['เกิดข้อผิดพลาดในการ Login']);
+               
+               Swal.fire({
+                   icon: 'error',
+                   title: 'Error',
+                   text: 'Not found accounts',
+                   // footer: '<a href="">Why do I have this issue?</a>'
+               })
+
+
+
+                   }
+
+       else if(this.responseText =="true"){
+           console.log("status="+this.responseText)
+           console.log("else 2")
+           Swal.fire({
+               icon: 'success',
+               title: 'Logined',
+               text: 'Login complete',
+               // footer: '<a href="">Why do I have this issue?</a>'
+             }).then((result)=>{
+               if(result.isConfirmed){
+                 //  getid(email,pass);
+                   window.location.href="./meprofile.html";
+               }
+             })
+           
+       }
+   }
+}
+
+getid()
+function getid(){
+  const emailvalue=localStorage.getItem('email-send');
+    const passvalue=localStorage.getItem('pass-send');
+   console.log("function getid");
+   console.log(emailvalue);
+   console.log(passvalue);
+
+     const http= new XMLHttpRequest();
+     http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/getid/"+emailvalue+"/"+passvalue);
+     http.send();
+     http.onreadystatechange=function(){
+      if (http.readyState == 4 && http.status == "200") {
+
+        let id1=JSON.parse(http.responseText);
+        // for(let id2 of id1){
+         let id2=id1[0];
+          console.log("this is id object");
+          console.log(id2["id_user"]);
+          const idglobal=id2["id_user"]
+          localStorage.setItem('idglobal-send',idglobal);
+
+        //  insertpost(id2["id_user"]);
+       
+        // }
+      
+        
+      }
+     
+      
+        };
+     
+ }
+    
+    
+</script>

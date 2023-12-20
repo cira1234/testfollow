@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@7/fonts/Anakotmai/Anakotmai.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="domain.js"></script>
+    <script src="carddata.js"></script>
+    <link href="sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- <link href="card.css" rel="stylesheet"> -->
+    <title>Learning</title>
+    
+
+</head>
+<body>
+
+    <style>
+        .dropdown_menu{
+     height: 0;
+     display: none;
+     position: absolute;
+     top:60px;
+     margin-left: 160px;
+     width: 150px;
+     background: #FFE4B5;
+     /* background: rgb(255, 255, 255,0.1); */
+     /* background: red; */
+     backdrop-filter: blur(15px);
+     border-radius: 20px;
+     overflow: hidden;
+     transition: height 0.2s cubic-bezier(0.175,0.885,0.32,1.275);
+  }
+  .dropdown_menu.open{
+     height: 240px;
+ }
+ .toggle_btn{
+     display: none;
+     position: absolute;
+     right:30px;
+     margin-top: 20px;
+ }
+        
+        </style>
+    
+<div class="wrapper">
+
+<div class="sidebar">
+
+    <h3>Dasboard</h3>
+    <ul>
+        <li><a href="meprofile.html"  style="text-decoration:none" class="check"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="profileset.html" style="text-decoration:none"><i class="fas fa-user"></i>Profile</a></li>
+        <li><a href="showpost.html" style="text-decoration:none" ><i class="fas fa-address-card"></i>Post</a></li>
+        <li><a href="learn.html" style="text-decoration:none" ><i  class="fas fa-graduation-cap"></i>Learn</a></li>
+        <li><a href="write.html" style="text-decoration:none"><i class="fas fa-pen"></i>Write</a></li>
+        <li><a href="assistuser.html" style="text-decoration:none"  ><i  class="fas fa-chalkboard-teacher"></i>Assist</a></li>
+        <li><a onclick="logout()" style="text-decoration:none"><i class='fas fa-sign-out-alt'></i>Logout</a></li>
+    </ul>
+
+</div>
+
+
+<style>
+       .card:hover img{
+        transform: scale(1.1) rotate(-3deg);
+    }
+     .card:hover p{
+        opacity: 1;
+        visibility: visible;
+    }
+        h1{
+        margin: 10px;
+        font-size: 40px;
+    }
+    p{
+        font-size: 20px;
+        margin: 20px;
+        visibility: hidden;
+        opacity: 0;
+    }
+    span{
+        font-weight: bold;
+    }
+    .card:hover{
+        cursor: pointer;
+    }
+        .intro{
+        height: 200px;
+        width: 300px;
+        /*padding: 6px;*/
+        /*box-sizing: border-box;*/
+        position: absolute;
+        background: rgb(27,27,27,.5);
+        color: white;
+        bottom: 0px;
+        transition: .80s;
+        
+        
+        /*border-radius:20px;*/
+    }
+ .card:hover .intro{
+        height: 250px;
+        /*bottom: 0px;*/
+        background: #0099ff;
+        opacity: 0.8;
+    }
+    .img{
+    width: 300px;
+        height: 345px;
+     
+        object-fit: cover;
+     }
+ 
+.card{
+    width: 300px;
+    margin-top: 5rem;
+    height:400px;
+    margin: 50px;
+    box-shadow: 5px 5px 10px black;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.check{
+  background:#0066ff;
+}
+@media(max-width:992px){
+    .sidebar{
+         display:none;
+     }
+     .header{
+        margin-left: -200px;
+     }
+     .card{
+        width:310px;
+        margin-left: -150px;
+     }
+     .intro{
+        width: 310px;
+     }
+     .toggle_btn{
+        position: absolute;
+    right: 20px;
+    margin-top: -65px;
+    }
+    .dropdown_menu{
+        display: block;
+    }
+    .toggle_btn{
+        margin-top: -45px;
+        display: block;
+    }
+    .text_dropdown{
+        margin-left: 40px;
+    }
+    .check{
+      background: orange;
+    }
+}
+</style>
+
+<div class="main_content">
+    <div class="header" id="top">Search Result
+
+       
+    </div>
+    <div class="toggle_btn">
+        <i class="fa-solid fa-bars" ></i>
+    </div>
+<div class="row row-cols-1 row-cols-md-3 g-4" id="allvideo">
+    <div class="col">
+            <div class="card">
+               
+                <img width="20px" src="img/logo.png" class="img1">
+                <div class="card-body">
+                <div class="intro">
+
+                    <h1>Loading...</h1>
+                    <p>The<span>FIFA</span> internationale de football association French for 'International Association Football Federation';[3] abbreviated as FIFA and pronounced in English as</p>
+                </div>
+                
+            </div>
+
+    </div>
+ </div>
+ 
+</div>
+</div>
+
+<div class="dropdown_menu">
+    <div class="text_dropdown"> 
+    <li><a href="meprofile.html"  style="text-decoration:none"  class="check" ><i class="fas fa-home"></i>Home</a></li>
+    <li ><a href="profileset.html" style="text-decoration:none"><i class="fas fa-user"></i>Profile</a></li>
+    <li><a href="showpost.html" style="text-decoration:none"><i class="fas fa-address-card"></i>Post</a></li>
+    <li><a href="learn.html" style="text-decoration:none"><i  class="fas fa-graduation-cap"></i>Learn</a></li>
+    <li><a href="write.html" style="text-decoration:none"><i class="fas fa-pen"></i>Write</a></li>
+    <li><a href="showquizuser.html" style="text-decoration:none" ><i  class="fas fa-chalkboard-teacher"></i>Quiz</a></li>
+    <li><a href="assistuser.html" style="text-decoration:none"  ><i  class="fas fa-chalkboard-teacher"></i>Assist</a></li>
+    <li><a onclick="logout()" style="text-decoration:none"><i class='fas fa-sign-out-alt'></i>Logout</a></li>
+</div>
+</div>
+    
+    
+</body>
+</html>
+<script>
+    const toggle_btn =document.querySelector('.toggle_btn')
+       const toggle_BtnIcon =document.querySelector('.toggle_btn i')
+       const dropdownmenu =document.querySelector('.dropdown_menu')
+       
+       toggle_btn.onclick = function(){
+           dropdownmenu.classList.toggle('open')
+           const isOpen=dropdownmenu.classList.contains('open')
+
+           toggle_BtnIcon.classList=isOpen
+            ? 'fa-solid fa-xmark'
+            : 'fa-solid fa-bars'
+       }
+</script>
+<script>
+
+const emailvalue=localStorage.getItem('email-send');
+    const passvalue=localStorage.getItem('pass-send');
+    const idglobal=localStorage.getItem('idglobal-send');
+    console.log('this is showpost.html')
+    console.log(emailvalue)
+    console.log(passvalue)
+    console.log(idglobal)
+
+    if(emailvalue==null && passvalue==null){
+            window.location.href="./index.html";
+        }
+          else  if(emailvalue=='Admin69@gmail.com' && passvalue=='090165'){
+            window.location.href="./index.html";
+        }
+       console.log(emailvalue)
+        console.log(passvalue)
+       function logout(){
+        console.log('function logout');
+        localStorage.removeItem('email-send')
+        localStorage.removeItem('pass-send')
+        window.location.href="./index.html";
+
+       }
+
+       var url=localStorage.getItem('send-url')
+        var domainweb=localStorage.getItem('send-domain')
+        var id_type=localStorage.getItem('idtypesearch');
+    allvideo()
+    function allvideo(){
+
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectvideosearch/"+id_type);
+http.send();
+http.onreadystatechange=function(){
+    if(this.status !="[]"){
+        objects = JSON.parse(this.responseText);
+        var dataStore ='';
+    for(let object of objects){
+
+        dataStore +=`
+        
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+
+                    <div class="card" onclick="getidvideo(${object["id_video"]})" >
+                    <img width="100%"  height="150px" border-radius="50px" src="${[domainweb]+["uploads/"]+object["imgvideo"]}">
+                        <div ">
+                        <div class="intro">
+                          
+                            <h1>${object["namevideo"]}</h1>
+                            <p>${[object["textexplain"]]}</p>
+                        </div>
+                        
+                    </div>
+    
+            </div>
+         </div>
+         </div>
+
+
+`;
+
+       
+    }
+
+}
+
+    document.getElementById("allvideo").innerHTML=dataStore;
+   
+
+    // document.getElementById("indexdata").innerHTML=dataStore;
+}
+
+}
+
+
+
+function getidvideo(object) {
+    console.log(object)
+    localStorage.setItem('idvideo-send',object);
+    window.location.href="./showvideo.html"
+}
+// allmenu()
+</script>

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@7/fonts/Anakotmai/Anakotmai.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="carddata.js"></script>
+    <link href="sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>your profile</title>
+    
+
+</head>
+<body>
+  <style>
+     .dropdown_menu{
+    height: 0;
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top:60px;
+    margin-right: -20px;
+    width: 150px;
+    background: rgb(30, 240, 250,0.1);
+    /*background: rgb(255, 255, 255,0.1);*/
+    /* background: red; */
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: height 0.2s cubic-bezier(0.175,0.885,0.32,1.275);
+ }
+ .dropdown_menu.open{
+    height: 240px;
+}
+.toggle_btn{
+    display: none;
+    position: absolute;
+    right:30px;
+    margin-top: -30px;
+}
+  </style>
+<style>
+  .container2{
+    margin-left: 250px;
+  }
+  .margintop{
+    margin-top: 20px;
+    margin-left: 5px;
+  }
+  .margintopbutton{
+    width: 380px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+    .card{
+        width: 66%;
+    margin-top: 20px;
+    height:50rem;
+    margin: 50px;
+    box-shadow: 5px 5px 10px gray;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.img1{
+    width: 100%;
+        height: 30rem;
+     
+        object-fit: cover;
+     }
+
+.check{
+  background:#0066ff;
+}
+.buttonset{
+    margin-top: 3rem;
+}
+
+.marginname{
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.marginbutton{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.margintoplow{
+    margin-top: 10px;
+}
+@media(max-width:992px){
+    .sidebar{
+         display:none;
+     }
+     .header{
+        margin-left: -200px;
+     }
+     .card{
+        width:280px;
+        margin-left: -435px;
+     }
+     .intro{
+        width: 310px;
+     }
+     .toggle_btn{
+        position: absolute;
+    right: 20px;
+    margin-top: -25px;
+    }
+    .dropdown_menu{
+        display: block;
+    }
+    .toggle_btn{
+        display: block;
+    }
+    .text_dropdown{
+        margin-left: 40px;
+    }
+    .check{
+        background:orange;
+    }
+    }
+</style>
+
+    
+<div class="wrapper">
+
+<div class="sidebar">
+
+    <h3>Dasboard</h3>
+    <ul>
+      <li><a href="meprofile.html"  style="text-decoration:none"><i class="fas fa-home"></i>Home</a></li>
+      <li><a href="profileset.html" style="text-decoration:none" class="check"><i class="fas fa-user"></i>Profile</a></li>
+      <li><a href="showpost.html" style="text-decoration:none"><i class="fas fa-address-card"></i>Post</a></li>
+      <li><a href="learn.html" style="text-decoration:none"><i  class="fas fa-graduation-cap"></i>Learn</a></li>
+      <li><a href="write.html" style="text-decoration:none"><i class="fas fa-pen"></i>Write</a></li>
+      <li><a href="showquizuser.html" style="text-decoration:none"  ><i  class="fas fa-chalkboard-teacher"></i>Quiz</a></li>
+      <li><a href="assistuser.html" style="text-decoration:none"  ><i  class="fas fa-chalkboard-teacher"></i>Assist</a></li>
+      <li><a onclick="logout()" style="text-decoration:none"><i class='fas fa-sign-out-alt'></i>Logout</a></li>
+    </ul>
+
+</div>
+<div class="main_content">
+    <div class="header">Make your profile
+      
+      <div class="toggle_btn">
+        <i class="fa-solid fa-bars " ></i>
+    </div>
+   
+
+    
+    </div>
+<div class="container2"id="profile">
+    <div class="card" >
+        <img src="img/logo.png" class="img1" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Not found</h5>
+          <p class="card-text">please check post or internet</p>
+            
+        </div>
+        </div>
+      </div>
+ <div class="dropdown_menu">
+      <div class="text_dropdown"> 
+      <li><a href="meprofile.html"  style="text-decoration:none" ><i class="fas fa-home"></i>Home</a></li>
+      <li ><a href="profileset.html" style="text-decoration:none"  class="check"><i class="fas fa-user"></i>Profile</a></li>
+      <li><a href="showpost.html" style="text-decoration:none"><i class="fas fa-address-card"></i>Post</a></li>
+      <li><a href="learn.html" style="text-decoration:none"><i  class="fas fa-graduation-cap"></i>Learn</a></li>
+      <li><a href="write.html" style="text-decoration:none"><i class="fas fa-pen"></i>Write</a></li>
+      <li><a href="showquizuser.html" style="text-decoration:none" ><i  class="fas fa-chalkboard-teacher"></i>Quiz</a></li>
+      <li><a href="assistuser.html" style="text-decoration:none"  ><i  class="fas fa-chalkboard-teacher"></i>Assist</a></li>
+      <li><a onclick="logout()" style="text-decoration:none"><i class='fas fa-sign-out-alt'></i>Logout</a></li>
+  </div>
+  </div>
+      
+       
+
+</div>
+
+</div>
+         
+</div>  
+    
+    
+</body>
+</html>
+<script>
+  const toggle_btn =document.querySelector('.toggle_btn')
+     const toggle_BtnIcon =document.querySelector('.toggle_btn i')
+     const dropdownmenu =document.querySelector('.dropdown_menu')
+     
+     toggle_btn.onclick = function(){
+         dropdownmenu.classList.toggle('open')
+         const isOpen=dropdownmenu.classList.contains('open')
+
+         toggle_BtnIcon.classList=isOpen
+          ? 'fa-solid fa-xmark'
+          : 'fa-solid fa-bars'
+     }
+</script>
+<script>
+
+const emailvalue=localStorage.getItem('email-send');
+    const passvalue=localStorage.getItem('pass-send');
+    const idglobal=localStorage.getItem('idglobal-send');
+    console.log('this is showpost.html')
+    console.log(emailvalue)
+    console.log(passvalue)
+    console.log(idglobal)
+
+    if(emailvalue==null && passvalue==null){
+            window.location.href="./index.html";
+        }
+          else  if(emailvalue=='Admin69@gmail.com' && passvalue=='090165'){
+            window.location.href="./index.html";
+        }
+       console.log(emailvalue)
+        console.log(passvalue)
+       function logout(){
+        console.log('function logout');
+        localStorage.removeItem('email-send')
+        localStorage.removeItem('pass-send')
+        window.location.href="./index.html";
+
+       }
+
+    profile()
+    function profile(){
+        console.log("this function showprofile")
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectprofile/"+idglobal);
+http.send();
+http.onreadystatechange=function(){
+    if(this.status !="[]"){
+        objects = JSON.parse(this.responseText);
+        var dataStore ='';
+    for(let object of objects){
+      iduser=object["id_user"];
+      localStorage.setItem('iduser1-send',iduser);
+        dataStore +=`
+      
+
+        <div class="card" id="profile">
+
+        <img width="100%"  height="600px" class="rounded" border-radius="50px" src="${["http://localhost/testfollow/imgpost/"]+object['imguser']}">
+
+        <div class="card-body">
+          <h1 class="marginname">Your Name : ${object["name"]}</h1>
+          <div class="marginbutton" align="center">
+          <button class="btn btn-primary" onclick="changeprofile(${object['id_user']})">Change Profile</button>
+          <button class="btn btn-primary" onclick="showcomment()">History Profile</button>
+          <button class="btn btn-primary" onclick="showallimg(${object["id_post"]})">View your Image All</button>
+          <button class="btn btn-primary"  onclick="deleteprofile('${object['imguser']}')">Delete Profile</button>
+        </div>
+        </div>
+      </div>
+
+
+
+      
+       
+     
+
+
+
+
+
+
+</div>
+
+</div>
+         
+</div>  
+     
+
+
+`;
+
+
+    }
+
+}
+
+    document.getElementById("profile").innerHTML=dataStore;
+
+    // document.getElementById("indexdata").innerHTML=dataStore;
+}
+
+}
+
+
+
+
+
+
+
+
+function insertprofile(object){
+    console.log("this is function editimgpage");
+    console.log(object);
+
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+      
+  <form  method="post" enctype="multipart/form-data" id="uploadFile">
+       
+  
+
+                <input type="file" name="file"  id="files" multiple><br>
+                <input type="submit" onclick="insertimguser(${object})" class="btn btn-primary w-100" class="buttonlogin" name="btn-post" value="Upload Image" >
+               
+            <!-- </form> -->
+           
+        
+        </form>
+        <div id="result"></div>
+ </div>
+
+</div>
+</div>
+
+
+    </div>
+        
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+})
+}
+
+
+
+
+function showimageslide(object){
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+
+
+  
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+})
+
+}
+
+
+
+function deleteprofile(object){
+    console.log('function delete profile')
+    console.log(object)
+    const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/deleteprofile/"+object);
+    http.send();  
+    returnprofiledefault();
+    // window.location.reload(true);
+}
+
+
+function deletehistory(object){
+    console.log('function delete history')
+    console.log(object)
+    const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/deletehistory/"+object);
+    http.send();  
+    window.location.reload(true);
+}
+
+function returnprofiledefault(){
+  localStorage.getItem('iduser1-send',iduser);
+  console.log('function return profile')
+  const http= new XMLHttpRequest();
+     http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/profiledefault/"+iduser);
+      http.send();  
+        window.location.reload(true);
+}
+
+
+
+function changeprofile(object){
+    console.log("this is function changeprofile");
+    console.log(object);
+
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+      
+  <form  method="post" enctype="multipart/form-data" id="uploadFile">
+     
+
+                <input type="file" name="file"  id="files" multiple><br>
+                <input type="submit"   onclick="insertimguser(${object})"   class="btn btn-primary w-100" class="buttonlogin" name="btn-post" value="insertpost" >
+               
+            <!-- </form> -->
+           
+        
+        </form>
+        <div id="result"></div>
+ </div>
+
+</div>
+</div>
+
+
+    </div>
+        
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+})
+
+}
+
+
+function insertimguser(object){
+
+    
+    const img=document.getElementById('files').value;
+ const namefilepost=img.split('\\').pop().split('/').pop();
+ console.log('insertprofile function');
+ console.log(object);
+ console.log(namefilepost);
+    const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertprofile/"+namefilepost+"/"+object);
+    http.send();
+    updateprofile(object,namefilepost)  
+    // window.location.reload(true);
+ }
+
+
+
+ function updateprofile(object,namefilepost){
+
+
+console.log('updateprofile function');
+console.log(object);
+console.log(namefilepost);
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/updateprofile/"+namefilepost+"/"+object);
+http.send();  
+
+}
+
+
+$(document).on('submit','#uploadFile',function(e){
+        e.preventDefault();
+       var formData = new FormData(this);
+        $.ajax({
+        method:"POST",
+        url: "saveimg2.php",
+        data:formData,
+        cache:false,
+        contentType: false,
+        processData: false,
+         beforeSend:function(){
+         $('button[type="submit"]').attr('disabled','disabled');
+       },
+        success: function(data){
+       
+        $('button[type="submit"]').removeAttr('disabled');
+       
+         $('#alertBox').html(data).fadeIn();
+         window.location.reload(true);
+      }
+           
+});
+
+      });   
+
+
+
+
+
+
+
+      function allcomment(){
+
+console.log("this function showimageuser")    
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectimguser/"+idglobal);
+http.send();
+http.onreadystatechange=function(){
+
+objects = JSON.parse(this.responseText);
+var dataStore ='';
+for(let object of objects){
+img=object["imguserh"];
+idimguser=object["id_imguser"]
+localStorage.setItem('imguser-send',img);
+localStorage.setItem('idimguser-send',idimguser);
+dataStore +=`
+<div class="container3"id="allcomment">
+<div class="card2" style="width: 18rem;">
+<div class="card-body">
+<div class="margintop">
+<img  width="150%"  height="400px" border-radius="50px" class="rounded" src="${["http://localhost/testfollow/imgpost/"]+object["imguserh"]}">
+</div>
+<div class="margintext">
+
+<div class="margintopbutton">
+    <button class="btn btn-primary w-100"  type="button" onclick="imghistory('${object["imguserh"]}')">Select Image</button>
+</div>
+
+<div class="margintopbutton">
+    <button class="btn btn-primary w-100"  type="button" onclick="deletehistory(${object['id']})">Delete this Image</button>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+`;
+
+
+}
+
+
+
+document.getElementById("allcomment").innerHTML=dataStore;
+
+// document.getElementById("indexdata").innerHTML=dataStore;
+}
+
+}
+
+
+function showcomment(){
+    allcomment();
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+  <div class="container3"id="allcomment">
+<div class="card2" style="width: 18rem;" >
+    <div class="card-body">
+       <div class="profile"></div> 
+      <h5 class="card-title" >Loading...    </h5>
+      <div class="margintext">
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+});
+
+}
+
+
+function imghistory(object){
+    // const img=localStorage.getItem('imguser-send');
+    const idimguser=localStorage.getItem('idimguser-send');
+    console.log('function imghistory');
+    console.log(object);
+    console.log(idimguser);
+
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/updateprofile/"+object+"/"+idimguser);
+        http.send();
+        window.location.reload(true);
+}
+
+
+function showallimg(object){
+  console.log("this is function showallimage");
+    console.log(object);
+
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+
+  <input type="submit" onclick="viewprofile(${object})" class="btn btn-primary w-100" class="buttonlogin" name="btn-post" value="View image Profile" >    
+ 
+       
+  
+                
+
+            <div class="margintoplow">
+                <input type="submit" onclick="viewpost()" class="btn btn-primary w-100" class="buttonlogin" name="btn-post" value="View image Post" >
+               </div>
+            <!-- </form> -->
+           
+        
+        <div id="result"></div>
+ </div>
+
+</div>
+</div>
+
+
+    </div>
+        
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+})
+}
+
+
+
+
+
+
+
+function showprofilenormal(){
+
+console.log("this function showimageuser")    
+console.log(idglobal)
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectimguser/"+idglobal);
+http.send();
+http.onreadystatechange=function(){
+
+objects = JSON.parse(this.responseText);
+var dataStore ='';
+for(let object of objects){
+img=object["imguserh"];
+idimguser=object["id_imguser"]
+localStorage.setItem('imguser-send',img);
+localStorage.setItem('idimguser-send',idimguser);
+dataStore +=`
+<div class="container3"id="allcomment">
+<div class="card2" style="width: 18rem;">
+<div class="card-body">
+<div class="margintop">
+<img  width="150%"  height="400px" border-radius="50px" class="rounded" src="${["http://localhost/testfollow/imgpost/"]+object["imguserh"]}">
+</div>
+<div class="margintext">
+
+
+</div>
+</div>
+</div>
+
+</div>
+
+`;
+
+
+}
+
+
+
+document.getElementById("allcomment").innerHTML=dataStore;
+
+// document.getElementById("indexdata").innerHTML=dataStore;
+}
+
+}
+
+
+
+function viewprofile(){
+    showprofilenormal();
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+  <div class="container3"id="allcomment">
+<div class="card2" style="width: 18rem;" >
+    <div class="card-body">
+       <div class="profile"></div> 
+      <h5 class="card-title" >Loading...    </h5>
+      <div class="margintext">
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+});
+
+}
+
+
+
+
+
+
+
+
+function showprofilepost(){
+
+console.log("this function showimgpost")    
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectpost/"+idglobal);
+http.send();
+http.onreadystatechange=function(){
+
+objects = JSON.parse(this.responseText);
+var dataStore ='';
+for(let object of objects){
+// img=object["imguserh"];
+// idimguser=object["id_imguser"]
+// localStorage.setItem('imguser-send',img);
+// localStorage.setItem('idimguser-send',idimguser);
+dataStore +=`
+<div class="container3"id="allpost">
+<div class="card2" style="width: 18rem;">
+<div class="card-body">
+<div class="margintop">
+<img  width="150%"  height="400px" border-radius="50px" class="rounded" src="${["http://localhost/testfollow/imgpost/"]+object["img"]}">
+</div>
+<div class="margintext">
+
+
+</div>
+</div>
+</div>
+
+</div>
+
+`;
+
+
+}
+
+
+
+document.getElementById("allpost").innerHTML=dataStore;
+
+// document.getElementById("indexdata").innerHTML=dataStore;
+}
+
+}
+
+
+
+function viewpost(){
+    showprofilepost();
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+  <div class="container3"id="allpost">
+<div class="card2" style="width: 18rem;" >
+    <div class="card-body">
+       <div class="profile"></div> 
+      <h5 class="card-title" >Loading...    </h5>
+      <div class="margintext">
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+});
+
+}
+
+
+</script>

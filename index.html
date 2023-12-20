@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@7/fonts/Anakotmai/Anakotmai.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="carddata.js"></script>
+    <script src="domain.js"></script>
+    <!-- <link href="index.css" rel="stylesheet"> -->
+    <!-- <link href="card.css" rel="stylesheet"> -->
+    <!-- <link href="nav.css" rel="stylesheet"> -->
+    <link href="videoset.css" rel="stylesheet">
+    <!-- <link href="card.css" rel="stylesheet"> -->
+    <link href="slideimage.css" rel="stylesheet">
+
+    <title>Home</title>
+    
+    <nav  >
+        <img src="img/logoweb.png" width="150px" class="logo">
+        <div class="toggle_btn">
+            <i class="fa-solid fa-bars " ></i>
+        </div>
+    
+          <div class="dropdown_menu">
+            <!-- <img src="img/logoweb.png" width="50px" class="logo"> -->
+            <li><a href="login30.html" style="text-decoration:none"  class="signin">Sign in</a></li>
+            <li><a href="register30.html" style="text-decoration:none" class="signup">Sign up</a></li>
+      
+        </div>
+        </div>
+        <ul >
+            <!-- <li><a href="login.html" style="text-decoration:none">Try Learn</a></li> -->
+            <li><a href="login30.html" style="text-decoration:none"  class="signin">Sign in</a></li>
+            <li><a href="register30.html" style="text-decoration:none" class="signup">Sign up</a></li>
+           
+            
+
+        </ul>
+    </nav>
+
+</head>
+<body >
+    <style>
+        .dropdown_menu{
+           height: 0;
+           display: none;
+           position: absolute;
+           right: -80px;
+           top:60px;
+           margin-right: 85px;
+           width: 150px;
+           background: #0099ff;
+           /* background: rgb(255, 255, 255,0.1); */
+           /* background: #87CEFA; */
+           backdrop-filter: blur(15px);
+           border-radius: 20px;
+           overflow: hidden;
+           transition: height 0.2s cubic-bezier(0.175,0.885,0.32,1.275);
+        }
+        .dropdown_menu.open{
+           height: 60px;
+       }
+       .toggle_btn{
+           display: none;
+           position: absolute;
+           right:30px;
+           margin-top: -30px;
+       }
+       
+       </style>
+    <!-- appbar -->
+<style>
+          .card:hover img{
+        transform: scale(1.1) rotate(-3deg);
+    }
+     .card:hover p{
+        opacity: 1;
+        visibility: visible;
+    }
+        h1{
+        margin: 10px;
+        font-size: 40px;
+    }
+    p{
+        font-size: 20px;
+        margin: 20px;
+        visibility: hidden;
+        opacity: 0;
+    }
+    span{
+        font-weight: bold;
+    }
+    .card:hover{
+        cursor: pointer;
+    }
+      .intro{
+        height: 250px;
+        width: 320px;
+        /*padding: 6px;*/
+        /*box-sizing: border-box;*/
+        position: absolute;
+        background: rgb(27,27,27,.5);
+        color: white;
+        bottom: 0px;
+        transition: .80s;
+        
+        
+        /*border-radius:20px;*/
+    }
+    .align{
+        margin-top: 50px;
+        margin-left:250px;
+    }
+    .widthimg{
+        width:1000px;
+    }
+    /* .white{
+        background-color: white;
+    } */
+    .red{
+        color: red;
+    }
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+    /* height: 100px;
+    width: 100px;
+    outline: black; */
+    background-color: rgba(0, 0, 0, 0.3);
+    /* background-size: 100%, 100%;
+    border-radius: 50%; */
+    /* border: 1px solid black; */
+}
+.card:hover .intro{
+        height: 300px;
+        /*bottom: 0px;*/
+        background: #0099ff;
+        opacity: 0.8;
+    }
+ 
+.card{
+    margin-left: 150px;
+    width: 320px;
+    /* margin-top:50px; */
+    height:500px;
+    box-shadow: 5px 5px 10px black;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.img{
+    margin-top: 45px;
+    width: 300px;
+        height: 150px;
+     
+        object-fit: cover;
+     }
+     .card:hover img{
+        transform: scale(1.1) rotate(-3deg);
+    }
+  
+    .title{
+        margin-top: -400px;
+        margin-left: 700px;
+        margin-bottom: 300px;
+    
+    }
+    .imgset{
+        margin-left: 150px;
+        margin-top: 150px;
+    }
+</style>
+
+<!-- responsive -->
+<style>
+    @media(max-width:992px){
+
+    .widthimg{
+        width: 300px;
+    }
+    .header1,
+    .header2{
+       
+        /* height: 100px; */
+      font-size: 20px;
+       width: 700px;
+    }
+    .align{
+        margin-top: 50px;
+        margin-left: 35px;
+      
+    } 
+ 
+    /* .headtext{
+        margin-left: 20px;
+        width: 500px;
+    } */
+    .detail{
+          font-size: 10px;
+        /* width: px; */
+        /* height:150px; */
+    }
+    .title{
+        margin-top: 20px;
+        margin-left:35px;
+        margin-bottom: 50px;
+    }
+    .imgset{
+         margin-left: 55px;
+        width: 500px;
+    }
+    .card{
+        
+        height:450px;
+        width:310px;
+        margin-left: -220px;
+        margin-bottom:25px;
+    }
+    .intro{
+        
+        height:180px;
+        width:310px;
+    }
+    .card:hover .intro{
+        height:240px;
+    }
+     .footer{
+        width: 800px;
+    }
+    /* .containercard{
+        flex-direction: column;
+    } */
+    .containerhead{
+        margin-top: -50px;
+        margin-left: -70px;
+    }
+    .containercard{
+        
+        margin-left: 250px;
+    }
+    
+    .carousel-control-prev{
+        margin-top: 250px;
+        margin-left: 10px;
+    }
+  
+    .carousel-control-next{
+        margin-left:-500px;
+        margin-top: 250px;
+     
+       
+    }
+ 
+    .headtext1{
+      
+        font-size: 30px;
+    }
+    .toggle_btn{
+        position: absolute;
+    right: 20px;
+    margin-top: -65px;
+    }
+    .dropdown_menu{
+        display: block;
+    }
+    .toggle_btn{
+        display: block;
+    }
+    .text_dropdown{
+        margin-left: 40px;
+    }
+    .check{
+      background: orange;
+    }
+  
+ 
+  
+
+    }
+</style>
+  
+<script>
+window.addEventListener("scroll",function(){
+    var header =document.querySelector("nav");
+    header.classList.toggle("sticky",window.scrollY>1)
+})
+</script>
+
+
+
+    <div class="containerhead">
+    <h1 class="header1">Flutter Sapling is Platform For</h1> 
+    <h1 class="header2">Learn Flutter build application </h1>   
+</div>
+    
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+
+        <div class="align">
+
+
+        <div class="carousel-inner" >
+          <div class="carousel-item active" >
+            <img src="img/tour.png" class="widthimg" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="img/designshop.png" class="widthimg" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="img/appdesign1themeblue.png" class="widthimg" alt="...">
+          </div>
+        </div>
+
+       
+
+       
+        <button color="red" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+
+
+    
+        <button  class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden"  >Next</span>
+        </button>
+   
+    
+
+
+      </div>
+    </div>
+
+
+
+
+   
+   <div class="imgset">
+    <img src="img/Capturelogin2.PNG" width="50%" >
+   </div>
+
+   <div class="title">
+    <h1 class="headtext1">Fluttersapling</h1>
+    <div class="detail">
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Error<br> aut deleniti iste, nobis in  molestiae. 
+    Vitae, iusto? Corrupti ducimus <br> culpa at! Atque natus ipsa eaque aspernatur voluptatum corrupti <br> autem dignissimos!
+    
+</div>
+   </div>
+
+
+   <div class="row row-cols-1 row-cols-md-3 g-4" id="allvideo">
+    <div class="col">
+
+   <div class="card" id="allvideo">
+    <img width="20px" src="img/Download .PNG" class="img">
+    <div class="intro">
+    </div>
+
+   </div>    
+
+
+</div>
+</div>    
+
+<script>
+    const toggle_btn =document.querySelector('.toggle_btn')
+       const toggle_BtnIcon =document.querySelector('.toggle_btn i')
+       const dropdownmenu =document.querySelector('.dropdown_menu')
+       
+       toggle_btn.onclick = function(){
+           dropdownmenu.classList.toggle('open')
+           const isOpen=dropdownmenu.classList.contains('open')
+
+           toggle_BtnIcon.classList=isOpen
+            ? 'fa-solid fa-xmark'
+            : 'fa-solid fa-bars'
+       }
+</script>
+
+<script>
+    domain=localStorage.getItem('send-domain');
+     allvideo()
+    function allvideo(){
+
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectvideoindex");
+http.send();
+http.onreadystatechange=function(){
+    if(this.status !="[]"){
+        objects = JSON.parse(this.responseText);
+        var dataStore ='';
+    for(let object of objects){
+
+        dataStore +=`
+        
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="containercard">
+                    <div class="card" onclick="getidvideo(${object["id_video"]})" >
+                    <img width="100%"  height="250px" border-radius="50px" src="${[domain]+["uploads/"]+object["imgvideo"]}">
+                        <div ">
+                        <div class="intro">
+                          
+                            <h1>${object["namevideo"]}</h1>
+                            <p>${[object["textexplain"]]}</p>
+                        </div>
+                        
+                    </div>
+    
+            </div>
+            </div>
+         </div>
+         </div>
+
+
+`;
+
+
+    }
+
+}
+
+    document.getElementById("allvideo").innerHTML=dataStore;
+
+    // document.getElementById("indexdata").innerHTML=dataStore;
+}
+
+}
+
+
+
+function getidvideo(object) {
+    console.log(object)
+    localStorage.setItem('idvideo-send',object);
+    window.location.href="./showvideoindex.html"
+}
+</script>
+
+
+  <style>
+    .headtext1{
+        margin-left: -5px;
+    }
+
+  
+  </style>
+  
+        <footer class="footer">
+          <div class="container2"> 
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company </h4>
+                    <ul>
+                        <li><a href="aboutme.html">about me</a></li>
+                        <li><a href="">our service</a></li>
+                        <li><a href="">privacy policy</a></li>
+                        <li><a href="">affilate program</a></li>
+                    </ul>
+                </div>
+               
+                 
+                    <div class="footer-col">
+                        <h4>follow us</h4>
+                            <div class="social-links">
+                            <a href="https://www.facebook.com/profile.php?id=100018418189395&locale=th_TH"><i class="fa-brands fa-facebook "></i></a>
+                            <a href="https://twitter.com/fxrdfxrd19"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/aunoford89/"><i class="fa-brands fa-instagram"></i></a>
+                            </div>
+                            
+                    </div>
+                   
+            </div>
+          </div>
+        
+        </footer> 
+    
+</body>
+
+</html>
+
+<style>
+    .app4{
+    margin-top: 20px;
+    margin-left: 15%;
+}
+.header1{
+    margin-top: 100px;
+    margin-left: 105px;
+}
+.header2{
+    margin-left: 105px;
+}
+
+/* .card{
+width: 300px;
+margin-top: 5rem;
+height:345px;
+margin: 50px;
+box-shadow: 5px 5px 10px black;
+border-radius: 20px;
+overflow: hidden;
+}
+ */
+
+
+
+
+nav{
+/* background: #00BFFF; */
+/* background: #F8F8FF; */
+overflow: hidden;
+background: white;
+height: 90px;
+width: 100%;
+/* border: 1px solid gray; */
+/* box-shadow: 3px 3px 3px grey; */
+margin: auto;
+
+
+}
+.logo{
+margin-left: 100px;
+}
+nav ul{
+float: right;
+margin-right: 20px;
+}
+
+nav ul li{
+display: inline-block;
+padding-right: 10px;
+padding-top: 30px;
+line-height: 20px;
+margin-top: 10px;
+margin-right: 30px;
+
+
+}
+nav ul li a{
+color: black;
+font-size: 17px;
+text-transform: uppercase;
+}
+body{
+font-family:  'Anakotmai';
+margin: auto;
+background-color: white;
+}
+
+.buttonlogin{
+height: 50px;
+margin-top: 20px;
+width: 100px;
+}
+
+/* .active,a:hover{
+background: #1b9bff;
+transition: .5s;
+} */
+.borderlink{
+border-bottom: none;
+}
+
+
+.headtext{
+margin-top: 20px;
+}
+.vertical {
+border-left: 3px solid black;
+height: 80px;
+position:absolute;
+left: 20%;
+}
+.vertical2 {
+
+margin-left: 22%;
+}
+.introapp1{
+margin-left: 21%;
+}
+
+
+
+.vertical3 {
+border-left: 3px solid black;
+height: 600px;
+position:absolute;
+left: 53%;
+margin-top: -90px;
+}
+.vertical4 {
+
+margin-left: 60%;
+}
+.vertical41 {
+
+margin-left: 60%;
+}
+.introapp3  {
+margin-top: -90px;
+margin-left: 60%;
+}
+.introapp31  {
+
+margin-top: 30px;
+margin-left: 20%;
+}
+
+
+
+.container{
+display: flex;
+padding: 0;
+}
+
+
+
+
+
+
+.logo2{
+background-color: #27022d;
+margin-top: 10px;
+margin-left: 38%;   
+}
+
+a{
+position: relative;
+
+color: white;
+text-decoration: none;
+letter-spacing: 1px;
+transition: 0.5s;
+overflow: hidden;
+}
+
+a:hover{
+background: #a41ee9;
+}
+a:nth-child(2):hover{
+background: #ff3c7f;
+}
+a::before{
+
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg,transparent,#fff,transparent);
+transition: 0.5s;
+
+}
+
+a:hover::before{
+left: 100%;
+}
+a:hover::after{
+position: relative;
+padding: 15px 30px;
+margin: 10px;
+background: #27022d;
+color: #fff;
+text-decoration: none;
+letter-spacing:  1px;
+border: 1px solid #000;
+transition: 0.5s;
+
+}
+a:hover{
+background: #ADD8E6;
+}
+footer{
+    margin-top: 5%;
+    /* padding: 70px 0; */
+}
+.container2{
+    width: 100%;
+    height:300px;
+    background-color: dodgerblue;
+     margin: auto;
+}
+
+ul{
+    list-style: none;
+}
+.footer-col{
+    width: 20%;
+    padding: 0 15px;
+}
+.footer-col h4{
+    margin-top: 20px;
+    padding-left: 35px;
+font-size: 18px;
+color: #ffffff;
+text-transform: capitalize;
+margin-bottom: 30px;
+font-weight: 500;
+position: relative;
+
+}
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    
+    bottom: -10px;
+    padding-left: 35px;
+    background-color: white;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+.footer-col ul li:not(:last-child){
+    margin-bottom: 10px;
+}
+.footer-col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: white;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition:all 0.3s ease;
+}   
+.footer-col ul li a:hover{
+    color: white;
+    padding-left: 8px;
+}
+.footer-col .social-links a{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255,255, 0.2);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: white;
+    transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+    color: black;
+    background-color: white;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap ;
+}
+</style>

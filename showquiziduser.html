@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@7/fonts/Anakotmai/Anakotmai.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="carddata.js"></script>
+    <link href="sidebar.css" rel="stylesheet">
+    <!-- <link href="card.css" rel="stylesheet"> -->
+    <title>Quiz</title>
+</head>
+<body>
+    <style>
+        .dropdown_menu{
+              height: 0;
+              display: none;
+              position: absolute;
+              /* right: 2rem; */
+              top:60px;
+              margin-left: -40px;
+              /* margin-right: 150px; */
+              width: 150px;
+              /* background: rgb(255, 255, 255,0.1); */
+              background: rgb(30, 240, 250,0.1);
+              backdrop-filter: blur(15px);
+              border-radius: 20px;
+              overflow: hidden;
+              transition: height 0.2s cubic-bezier(0.175,0.885,0.32,1.275);
+           }
+           .dropdown_menu.open{
+              height: 240px;
+          }
+          .toggle_btn{
+              display: none;
+              position: absolute;
+              right:30px;
+              margin-top: -30px;
+          }
+          
+          </style>
+    <style>
+        .setmaxpoint{
+            margin-top: 200px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        /* .container{
+            width: 500px;
+            height: 500px;
+            border: 1 black;
+            background-color: aqua;
+            border-radius: 20px;
+            margin-left: 450px;
+        } */
+        .card{
+            margin-top: 20px;
+            margin-left: 350px;
+            height: 550px;
+        }
+        
+        .setradio{
+            margin-top: -20px;
+            margin-left: 30px;
+        }
+        .settitle{
+            margin-top: 150px;
+            margin-left: 60px;
+        }
+        .settitle2{
+            margin-top: 50px;
+            margin-left: 20px;
+        }
+        .containerchoice{
+            /* display: flex;
+            flex-direction: column; */
+            margin-top: 50px;
+        }
+        .setbutton{
+            /* margin-top: 50px;
+            margin-left: 100px;
+            width: 300px; */
+            margin: 50px;
+        }
+        .setbutton2{
+            /* margin-top: 50px;
+            margin-left: 100px;
+            width: 300px; */
+          margin-left: 60px;
+          margin-right: 60px;
+        }
+        .check{
+  background:#0066ff;
+}
+.setbutton22{
+   
+    margin-left: 60px;
+    margin-right: 60px;
+}
+.setbuttonback{
+    width: 40%;
+    margin-left: 40px;
+}
+.cardcheckanswer{
+   
+        width: 500px;
+        height: 500px;
+        border-radius: 10px;
+        background-color: red;
+       
+}
+.textcheckpoint{
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 150px;
+    margin-bottom: 30px;
+}
+@media(max-width:992px){
+    .sidebar{
+        display: none;
+    }
+    .header{
+        margin-left: -200px;
+    }
+    .container3{
+        height:160px;
+        width: 580px;
+        margin-left: -535px;
+    }
+    .toggle_btn{
+    position: absolute;
+    right: 20px;
+    margin-top: -25px;
+    }
+    .dropdown_menu{
+        display: block;
+    }
+    .toggle_btn{
+        display: block;
+    }
+    .text_dropdown{
+        margin-left: 40px;
+    }
+    .check{
+      background: orange;
+    }
+    .settitle{
+        margin-left: 20px;
+    }
+}
+    </style>
+
+
+<div class="wrapper">
+
+    <div class="sidebar">
+    
+        <h3>Dasboard</h3>
+        <ul>
+            <li><a href="meprofile.html"  style="text-decoration:none"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="profileset.html" style="text-decoration:none"><i class="fas fa-user"></i>Profile</a></li>
+            <li><a href="showpost.html" style="text-decoration:none"><i class="fas fa-address-card"></i>Post</a></li>
+            <li><a href="learn.html" style="text-decoration:none"><i  class="fas fa-graduation-cap"></i>Learn</a></li>
+            <li><a href="write.html" style="text-decoration:none"><i class="fas fa-pen"></i>Write</a></li>
+            <li><a href="showquizuser.html" style="text-decoration:none"  class="check"><i  class="fas fa-chalkboard-teacher"></i>Quiz</a></li>
+            <li><a href="assistuser.html" style="text-decoration:none"  ><i  class="fas fa-chalkboard-teacher"></i>Assist</a></li>
+            <li><a onclick="logout()" style="text-decoration:none"><i class='fas fa-sign-out-alt'></i>Logout</a></li>
+    
+        </ul>
+    
+    </div>
+    <div class="main_content">
+        <div class="header">Quiz Create Object choice
+
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars " ></i>
+            </div>
+        
+        </div>
+    <div class="container3"id="choice">
+        <div class="card w-50 " >
+            <h3 class="settitle">กดปุ่ม Start Quiz เพื่อเริ่มทำแบบทดสอบ</h3>
+            <div class="containerchoice">
+                
+            </div>
+    
+            <!-- <div class="setbutton">
+            <button type="button" class="btn btn-primary w-100">Send Answer</button>
+            </div> -->
+            <div class="setbutton2">
+                <button type="button" class="btn btn-primary w-100" onclick="start()">Start Quiz</button>
+                </div>
+        </div>
+        
+          </div>
+          <div class="dropdown_menu">
+            <div class="text_dropdown"> 
+            <li><a href="meprofile.html"  style="text-decoration:none"  ><i class="fas fa-home"></i>Home</a></li>
+            <li ><a href="profileset.html" style="text-decoration:none"><i class="fas fa-user"></i>Profile</a></li>
+            <li><a href="showpost.html" style="text-decoration:none"><i class="fas fa-address-card"></i>Post</a></li>
+            <li><a href="learn.html" style="text-decoration:none"><i  class="fas fa-graduation-cap"></i>Learn</a></li>
+            <li><a href="write.html" style="text-decoration:none"><i class="fas fa-pen"></i>Write</a></li>
+            <li><a href="showquizuser.html" style="text-decoration:none"  class="check"><i  class="fas fa-chalkboard-teacher"></i>Quiz</a></li>
+            <li><a href="assistuser.html" style="text-decoration:none"  ><i  class="fas fa-chalkboard-teacher"></i>Assist</a></li>
+            <li><a onclick="logout()" style="text-decoration:none"><i class='fas fa-sign-out-alt'></i>Logout</a></li>
+        </div>
+        </div>
+   
+</body>
+</html>
+<script>
+    const toggle_btn =document.querySelector('.toggle_btn')
+       const toggle_BtnIcon =document.querySelector('.toggle_btn i')
+       const dropdownmenu =document.querySelector('.dropdown_menu')
+       
+       toggle_btn.onclick = function(){
+           dropdownmenu.classList.toggle('open')
+           const isOpen=dropdownmenu.classList.contains('open')
+  
+           toggle_BtnIcon.classList=isOpen
+            ? 'fa-solid fa-xmark'
+            : 'fa-solid fa-bars'
+       }
+  </script>
+
+<script>
+    const emailvalue=localStorage.getItem('email-send');
+    const passvalue=localStorage.getItem('pass-send');
+    const idglobal=localStorage.getItem('idglobal-send');
+    console.log('this is showpost.html')
+    console.log(emailvalue)
+    console.log(passvalue)
+    console.log(idglobal)
+
+    if(emailvalue==null && passvalue==null){
+            window.location.href="./index.html";
+        }
+       console.log(emailvalue)
+        console.log(passvalue)
+       function logout(){
+        console.log('function logout');
+        localStorage.removeItem('email-send')
+        localStorage.removeItem('pass-send')
+        window.location.href="./index.html";
+
+       }
+        const storyname=localStorage.getItem('send-storynameuser');
+        id_user=localStorage.getItem('idglobal-send');
+        console.log(storyname)
+        idquiz=1;
+        i=1;
+        var point=0;
+        memberpont=0;
+        var check=0;
+        function start(){
+           var check=1;
+            if(check==1){
+
+                choiceid()
+            }
+        }
+    function choiceid(){
+        localStorage.removeItem('check1')
+        localStorage.removeItem('check2')
+        localStorage.removeItem('check3')
+        localStorage.removeItem('check4')
+
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectchoicestory/"+storyname+"/"+idquiz);
+http.send();
+http.onreadystatechange=function(){
+    if(this.status !="[]"){
+        objects = JSON.parse(this.responseText);
+        var dataStore ='';
+    for(let object of objects){
+
+        dataStore +=`
+        <div class="container2">
+        <div class="card w-50 " id="choice" >
+            <h3 class="settitle2">${i+".&nbsp;"}${object['quiz']}</h3>
+            <div class="containerchoice">
+                <input type="radio" class="setradio" name="testing" id="testing_op1" value="${object['choice1']}"> &nbsp;${object['choice1']}<br><br><br>
+
+                <div id="boxcheckanswer1">
+                </div>
+
+                <input type="radio" class="setradio" name="testing" id="testing_op2" value="${object['choice2']}"> &nbsp;${object['choice2']}<br><br><br>
+
+                <div id="boxcheckanswer2">
+                </div>
+
+                <input type="radio" class="setradio" name="testing" id="testing_op3" value="${object['choice3']}"> &nbsp;${object['choice3']}<br><br><br>
+
+                <div id="boxcheckanswer3">
+                </div>
+
+                <input type="radio" class="setradio" name="testing" id="testing_op4" value="${object['choice4']}"> &nbsp;${object['choice4']}<br><br><br>
+
+                <div id="boxcheckanswer4">
+                </div>
+
+            </div>
+    
+            <div class="setbutton2">
+            <button type="button" class="btn btn-primary w-100" onclick="nextpage(),checkanswer()">Next Page</button>
+            </div>
+        </div>
+          </div>
+          
+       
+
+`;
+
+
+
+    }
+
+}
+
+    document.getElementById("choice").innerHTML=dataStore;
+
+    // document.getElementById("indexdata").innerHTML=dataStore;
+}
+
+}
+function nextpage(){
+    idquiz++
+    i++
+    if(i<=4){
+        localStorage.setItem("index",i);
+    }
+   
+   
+    const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectchoicestory/"+storyname+"/"+idquiz);
+http.send();
+http.onreadystatechange=function(){
+    if(this.responseText=="false"){
+        checksum();
+
+    
+    
+
+               
+}
+else{
+        objects = JSON.parse(this.responseText);
+        var dataStore ='';
+    for(let object of objects){
+
+        dataStore +=`
+        <div class="container2"id="choice">
+        <div class="card w-50 " >
+            <h3 class="settitle2">${i+".&nbsp;"}${object['quiz']}</h3>
+            <div class="containerchoice">
+                <input type="radio" class="setradio" name="testing" id="testing_op1" value="${object['choice1']}"> &nbsp;${object['choice1']}<br><br><br>
+                
+                <div id="boxcheckanswer1">
+                </div>
+                
+                <input type="radio" class="setradio" name="testing" id="testing_op2" value="${object['choice2']}"> &nbsp;${object['choice2']}<br><br><br>
+                
+                <div id="boxcheckanswer2">
+                </div>
+
+                <input type="radio" class="setradio" name="testing" id="testing_op3" value="${object['choice3']}"> &nbsp;${object['choice3']}<br><br><br>
+                
+                <div id="boxcheckanswer3">
+                </div>
+
+                
+                <input type="radio" class="setradio" name="testing" id="testing_op4" value="${object['choice4']}"> &nbsp;${object['choice4']}<br><br><br>
+            
+                <div id="boxcheckanswer4">
+                </div>
+
+                </div>
+            
+         
+           
+
+            <div class="setbutton22">
+            <button type="button" class="btn btn-primary w-100" onclick="nextpage(),checkanswer()">Next Page</button>
+            </div>
+        </div>
+          </div>
+          
+       
+
+`;
+        }
+        document.getElementById("choice").innerHTML=dataStore;
+
+    }
+ 
+ 
+}
+
+
+
+}
+
+
+
+// function backpage(){
+//     idquiz--
+//     i--
+//     const http= new XMLHttpRequest();
+// http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectchoicestory/"+storyname+"/"+idquiz);
+// http.send();
+// http.onreadystatechange=function(){
+//     if(this.status !="[]"){
+//         objects = JSON.parse(this.responseText);
+//         var dataStore ='';
+//         var dataStore1='';
+//     for(let object of objects){
+
+//         dataStore +=`
+//         <div class="container2"id="choice">
+//         <div class="card w-50 " >
+//             <h3 class="settitle">${i+".&nbsp;"}${object['quiz']}</h3>
+//             <div class="containerchoice">
+//                 <input type="radio" class="setradio" name="testing" id="testing_op1" value="${object['choice1']}"> &nbsp;${object['choice1']}<br><br><br>
+//                 <input type="radio" class="setradio" name="testing" id="testing_op2" value="${object['choice2']}"> &nbsp;${object['choice2']}<br><br><br>
+//                 <input type="radio" class="setradio" name="testing" id="testing_op3" value="${object['choice3']}"> &nbsp;${object['choice3']}<br><br><br>
+//                 <input type="radio" class="setradio" name="testing" id="testing_op4" value="${object['choice4']}"> &nbsp;${object['choice4']}<br><br><br>
+//             </div>
+            
+
+//             <div class="setbuttonback">
+//             <button type="button" class="btn btn-primary w-100" onclick="backpage()">Back</button>
+//             </div>
+
+//             <div class="setbutton22">
+//             <button type="button" class="btn btn-primary w-100" onclick="nextpage(),checkanswer()">Next Page</button>
+//             </div>
+//         </div>
+//           </div>
+          
+       
+
+// `;
+
+//        dataStore1 +=`
+//        <div class="container2"id="choice">
+//         <div class="card w-50 " >
+//             <h3 class="settitle">${i+".&nbsp;"}${object['quiz']}</h3>
+//             <div class="containerchoice">
+//                 <input type="radio" class="setradio" name="testing" id="testing_op1"  value="${object['choice1']}"> &nbsp;${object['choice1']}<br><br><br>
+//                 <input type="radio" class="setradio" name="testing" id="testing_op2"  value="${object['choice2']}"> &nbsp;${object['choice2']}<br><br><br>
+//                 <input type="radio" class="setradio" name="testing" id="testing_op3"  value="${object['choice3']}"> &nbsp;${object['choice3']}<br><br><br>
+//                 <input type="radio" class="setradio" name="testing" id="testing_op4"  value="${object['choice4']}"> &nbsp;${object['choice4']}<br><br><br>
+//             </div>
+    
+//             <div class="setbutton2">
+//             <button type="button" class="btn btn-primary w-100" onclick="nextpage(),checkanswer()">Next Page</button>
+//             </div>
+//         </div>
+//           </div>
+//           </div>
+      
+// `;
+
+
+
+
+//     }
+
+// }
+//             if(i<=1){
+//                 console.log('if 1 on')
+//                 document.getElementById("choice").innerHTML=dataStore1;
+//             }
+//            else{
+//             console.log('else on')
+//             document.getElementById("choice").innerHTML=dataStore;
+//            }
+   
+
+//     // document.getElementById("choice").innerHTML=dataStore;
+
+//     // document.getElementById("indexdata").innerHTML=dataStore;
+// }
+
+
+// }
+
+function checkanswer(){
+    console.log('function checkanswer ON')
+    var chioce1=document.getElementById("testing_op1").value;
+    var chioce2=document.getElementById("testing_op2").value;
+    var chioce3=document.getElementById("testing_op3").value;
+    var chioce4=document.getElementById("testing_op4").value;
+    console.log(chioce2)
+    if(document.getElementById('testing_op1').checked == true){
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/checkanswer/"+chioce1);
+        http.send();
+        http.onreadystatechange=function(){
+            if(this.responseText=="true"){
+                var check1=1;
+                // localStorage.setItem('check1',check)
+                console.log('this is check 1 ='+check1)
+                // dataStore +=`
+                //     <div class="cardcheckanswer">1
+                //     </div>
+                // `;
+
+                // document.getElementById("boxcheckanswer2").innerHTML=dataStore;
+                        if(check1==1){
+                            processpoint1(check1)
+                }
+            }
+            else if(this.responseText=="false"){
+                var check1=0;
+                processpoint1(check1)
+                console.log('this is check 1 false='+check1)
+            }
+        }
+        
+
+    }
+    //
+    else if(document.getElementById('testing_op2').checked == true){
+ 
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/checkanswer/"+chioce2);
+        http.send();
+        http.onreadystatechange=function(){
+          
+            if(this.responseText=="true"){
+                var check2=1;
+                // localStorage.setItem('check2',check)
+                console.log('this is check 2 ='+check2)
+                // dataStore +=`
+                //     <div class="cardcheckanswer">1
+                //     </div>
+                // `;
+
+                // document.getElementById("boxcheckanswer2").innerHTML=dataStore;
+                if(check2==1){
+                    processpoint2(check2)
+                }
+            }
+            else if(this.responseText=="false"){
+                var check2=0;
+                if(check2==0){
+                    processpoint2(check2)
+                }
+                console.log('this is check 2 false='+check2)
+            }
+        }
+        // globalcheck1=localStorage.getItem('check2')
+        // console.log("globalcheck1=",globalcheck1)
+        // if(globalcheck1==1){
+        //     processpoint1()
+        //     localStorage.removeItem('check2')
+        // }
+        // else if(globalcheck1==0){
+        //     console.log('answer wrong');
+        //     localStorage.removeItem('check2')
+        // }
+    }
+    //
+    else if(document.getElementById('testing_op3').checked == true){
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/checkanswer/"+chioce3);
+        http.send();
+        http.onreadystatechange=function(){
+            if(this.responseText=="true"){
+                var check3=1;
+                // localStorage.setItem('check3',check)
+                console.log('this is check 3 ='+check3)
+                // dataStore +=`
+                //     <div class="cardcheckanswer">1
+                //     </div>
+                // `;
+
+                // document.getElementById("boxcheckanswer2").innerHTML=dataStore;
+                if(check3==1){
+                    processpoint3(check3)
+                }
+            }
+            else if(this.responseText=="false"){
+                var check3=0;
+                if(check3==0){
+                    processpoint3(check3)
+                }
+                console.log('this is check 3 false='+check3)
+            }
+        }
+        // globalcheck1=localStorage.getItem('check3')
+        // if(globalcheck1==1){
+        //     processpoint1()
+        //     localStorage.removeItem('check3')
+        // }
+        // else if(globalcheck1==0){
+        //     console.log('answer wrong');
+        //     localStorage.removeItem('check3')
+        // }
+
+
+    }
+    //
+    else if(document.getElementById('testing_op4').checked == true){
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/checkanswer/"+chioce4);
+        http.send();
+        http.onreadystatechange=function(){
+            if(this.responseText=="true"){
+                var check4=1;
+                // localStorage.setItem('check4',check)
+                console.log('this is check 4 ='+check4)
+                // dataStore +=`
+                //     <div class="cardcheckanswer">1
+                //     </div>
+                // `;
+
+                // document.getElementById("boxcheckanswer2").innerHTML=dataStore;
+                if(check4==1){
+                    processpoint4(check4)
+                }
+            }
+            else if(this.responseText=="false"){
+                var check4=0;
+                if(check4==0){
+                    processpoint4(check4)
+                }
+                console.log('this is check 4 false='+check4)
+            }
+        }
+        // globalcheck1=localStorage.getItem('check4')
+        // if(globalcheck1==1){
+        //     processpoint1()
+        //     localStorage.removeItem('check4')
+        // }
+        // else if(globalcheck1==0){
+        //     console.log('answer wrong');
+        //     localStorage.removeItem('check4')
+        // }
+         
+
+    }
+
+
+}
+
+function processpoint1(check1){
+    console.log('this function process point1')
+   
+    console.log('function check 1 =',check1)
+    
+  
+    localStorage.setItem('check1',check1)
+    // if(check1==null){
+    //     check1=0
+    //     localStorage.setItem('check1',check1)
+    // }
+    // else if(isNaN(check1)){
+    //     check1=0
+    //     localStorage.setItem('check1',check1)
+    // }
+    // else{
+    //     localStorage.setItem('check1',check1)
+    // }
+    
+    
+}
+
+function processpoint2(check2){
+    console.log('this function process point2')
+   
+    console.log('function check 2 =',check2)
+    localStorage.setItem('check2',check2)
+
+    // if(check2==null){
+    //     check2=0
+    //     localStorage.setItem('check2',check2)
+    // }
+    // else if(isNaN(check2)){
+    //     check2=0
+    //     localStorage.setItem('check2',check2)
+    // }
+    // else{
+    //     localStorage.setItem('check2',check2)
+    // }
+}
+
+
+function processpoint3(check3){
+    console.log('this function process point3')
+   
+    console.log('function check 3 =',check3)
+    localStorage.setItem('check3',check3)
+    // if(check3==null){
+    //     check3=0
+    //     localStorage.setItem('check3',check3)
+    // }
+    // else if(isNaN(check3)){
+    //     check3=0
+    //     localStorage.setItem('check3',check3)
+    // }
+    // else{
+    //     localStorage.setItem('check3',check3)
+    // }
+    
+}
+
+function processpoint4(check4){
+    console.log('this function process point4')
+   
+  
+    console.log('function check 4 =',check4)
+    localStorage.setItem('check4',check4)
+    // if(check4==null){
+    //     check4=0
+    //     localStorage.setItem('check4',check4)
+    // }
+    // else if(isNaN(check4)){
+    //     check4=0
+    //     localStorage.setItem('check4',check4)
+    // }
+    // else{
+    //     localStorage.setItem('check4',check4)
+    // }
+}
+
+// function processpoint2(getpoint2){
+   
+// }
+
+// function processpoint3(getpoint3){
+//     console.log('this function process point3')
+//     pointpro=0
+//     process=pointpro+getpoint3;
+//     console.log(process)
+// }
+
+// function processpoint4(getpoint4){
+//     console.log('this function process point4')
+//     pointpro=0
+//     process=pointpro+getpoint4;
+//     console.log(process)
+// }
+
+function checksum(){
+    var dataStore2 ='';
+    dataStore2 +=`
+                    <div class="container2"id="choice">
+                        <div class="card w-50 " >
+                            
+                        <div class="textcheckpoint">
+                        <h1>หากต้องการดูคะแนนแบบทดสอบของคุณให้กดปุ่ม View Point</h1>
+                    </div>
+                            <div class="setbutton22">
+                            <button type="button" class="btn btn-primary w-100" onclick="sumpoint()">View Point</button>
+                            </div>
+                        </div>
+                        </div>
+                        
+                                `;
+                                
+            document.getElementById("choice").innerHTML=dataStore2;
+}
+function sumpoint(){
+        console.log('sumpoint ON')
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertsetpoint/"+storyname+"/"+id_user);
+        http.send();
+
+
+        setTimeout(() => { totalpoint(); }, 2000);
+
+    
+}
+function totalpoint(){
+    var total=0;
+    console.log('total point ON');
+    index=localStorage.getItem('index');
+     point1=parseInt(localStorage.getItem('check1'));
+     point2=parseInt(localStorage.getItem('check2'));
+     point3=parseInt(localStorage.getItem('check3'));
+     point4=parseInt(localStorage.getItem('check4'));
+
+     console.log(point1)
+     console.log(point2)
+     console.log(point3)
+     console.log(point4)
+
+     if(isNaN(point1)){
+        point1=0;
+        total=point1+point2+point3+point4;
+        console.log('total1=',total);
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/updatepoint/"
+        +id_user+"/"+storyname+"/"+total+"/"+index);
+        http.send();
+        setTimeout(() => { showmaxpoint(); }, 2000);
+     }
+
+     else if(isNaN(point2)){
+        point2=0;
+        total=point1+point2+point3+point4;
+        console.log('total=',total);
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/updatepoint/"
+        +id_user+"/"+storyname+"/"+total+"/"+index);
+        http.send();
+        setTimeout(() => { showmaxpoint(); }, 2000);
+     }
+     else if(isNaN(point3)){
+        point3=0;
+        total=point1+point2+point3+point4;
+        console.log('total=',total);
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/updatepoint/"
+        +id_user+"/"+storyname+"/"+total+"/"+index);
+        http.send();
+        setTimeout(() => { showmaxpoint(); }, 2000);
+     }
+     else if(isNaN(point4)){
+        point4=0;
+        total=point1+point2+point3+point4;
+        console.log('total=',total);
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/updatepoint/"
+        +id_user+"/"+storyname+"/"+total+"/"+index);
+        http.send();
+        setTimeout(() => { showmaxpoint(); }, 2000);
+     }
+     else if(isNaN(point1) && isNaN(point2) && isNaN(point3) && isNaN(point4)){
+        point1=0;
+        point2=0;
+        point3=0;
+        point4=0;
+        total=0;
+        console.log('total=',total);
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/updatepoint/"
+        +id_user+"/"+storyname+"/"+total+"/"+index);
+        http.send();
+        setTimeout(() => { showmaxpoint(); }, 2000);
+     }
+     else if(isNaN(point1) && isNaN(point2) && isNaN(point3)){
+        point1=0;
+        point2=0;
+        point3=0;
+        total=point1+point2+point3+point4;
+        console.log('total=',total+"/"+index);
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/updatepoint/"
+        +id_user+"/"+storyname+"/"+total+"/"+index);
+        http.send();
+        setTimeout(() => { showmaxpoint(); }, 2000);
+     }
+     else if(isNaN(point1) && isNaN(point2)){
+        point1=0;
+        point2=0;
+        total=point1+point2+point3+point4;
+        console.log('total=',total);
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/updatepoint/"
+        +id_user+"/"+storyname+"/"+total+"/"+index);
+        http.send();
+        setTimeout(() => { showmaxpoint(); }, 2000);
+     }
+
+     else if(isNaN(point2) && isNaN(point3)){
+        point2=0;
+        point3=0;
+        total=point1+point2+point3+point4;
+        console.log('total=',total);
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/updatepoint/"
+        +id_user+"/"+storyname+"/"+total+"/"+index);
+        http.send();
+        setTimeout(() => { showmaxpoint(); }, 2000);
+     }
+
+     else if(isNaN(point3) && isNaN(point4)){
+        point3=0;
+        point4=0;
+        total=point1+point2+point3+point4;
+        console.log('total=',total);
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/updatepoint/"
+        +id_user+"/"+storyname+"/"+total+"/"+index);
+        http.send();
+        setTimeout(() => { showmaxpoint(); }, 2000);
+     }
+     else if(isNaN(total)){
+        total=0
+        console.log('total Nan=',total)
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/updatepoint/"
+        +id_user+"/"+storyname+"/"+total+"/"+index);
+        http.send();
+        setTimeout(() => { showmaxpoint(); }, 2000);
+     }
+ 
+     else if(point1==1 && point2==1 && point3==1 && point4==1){
+        total=point1+point2+point3+point4;
+        console.log(total)
+        const http= new XMLHttpRequest();
+        http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/updatepoint/"
+        +id_user+"/"+storyname+"/"+total+"/"+index);
+        http.send();
+        setTimeout(() => { showmaxpoint(); }, 2000);
+     }
+     
+
+
+
+}
+
+function showmaxpoint(){
+    console.log(id_user)
+    console.log(storyname)
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/showmaxpoint/"+id_user+"/"+storyname);
+http.send();
+http.onreadystatechange=function(){
+    if(this.status !="[]"){
+        objects = JSON.parse(this.responseText);
+        var dataStore ='';
+    for(let object of objects){
+
+        dataStore +=`
+       
+        <div class="container2"id="choice">
+                        <div class="card w-50 " >
+                            
+                        <div class="setmaxpoint">
+                        <h1>${object['point']}/${object['maxpoint_id']}</h1>
+                    </div>
+                            <div class="setbutton22">
+                            <button type="button" class="btn btn-primary w-100" onclick="backselectquiz()">Back select quiz</button>
+                            </div>
+                        </div>
+                        </div>
+
+`;
+
+
+
+    }
+
+}
+
+    document.getElementById("choice").innerHTML=dataStore;
+
+    // document.getElementById("indexdata").innerHTML=dataStore;
+}
+}
+
+function backselectquiz(){
+    window.location.href="./showlistchoiceuser.html"
+}
+// </script>
+

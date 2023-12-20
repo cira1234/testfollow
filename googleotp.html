@@ -1,0 +1,487 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="login.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" >
+    <!-- <script src="carddata.js"></script> -->
+    <title>Register</title>
+  </head>
+  <body class="text-center">
+
+<style>
+       button{
+        position: relative;
+        background: #27022d;
+        color: white;
+        text-decoration: none;
+        letter-spacing: 1px;
+        border: 1px solid #000;
+        transition: 0.5s;
+        overflow: hidden;
+    }
+
+    button:hover{
+        background: #a41ee9;
+    }
+    button:nth-child(2):hover{
+        background: #ff3c7f;
+    }
+    button::before{
+
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,transparent,#fff,transparent);
+        transition: 0.5s;
+
+    }
+
+    button:hover::before{
+        left: 100%;
+    }
+    button:hover::after{
+        position: relative;
+        padding: 15px 30px;
+        margin: 10px;
+        background: #27022d;
+        color: #fff;
+        text-decoration: none;
+        letter-spacing:  1px;
+        border: 1px solid #000;
+        transition: 0.5s;
+        
+    }
+    button:hover{
+        background: #a41ee9;
+    }
+    body{
+    padding-top:1rem;
+    background-color:white;
+}
+.buttonlogin{
+ 
+ padding-top:20px;
+ height: 50px;
+
+}
+.setleftimg{
+  
+      margin-left: 280px;
+      margin-top: 100px;
+      width: 280px;
+      height: 550px;
+      border: 8px solid;
+      border-color: black;
+      border-radius: 50px ;
+      margin-bottom: 50px;
+    }
+    .setleftimg2{
+      margin-right: 250px;
+      margin-top: -750px;
+      width: 300px;
+      height: 80%;
+      border: 8px solid;
+      border-color: black;
+      border-radius: 50px ;
+      
+    }
+    .setleftimg3{
+     margin-left: 600px;
+      margin-bottom: -830px;
+      width: 250px;
+      height: 480px;
+      border: 8px solid;
+      border-color: black;
+      border-radius: 50px ;
+    }
+.emailform{
+  margin-right: -100px;
+  margin-left: 100px;
+}
+.google{
+  margin-right: -150px;
+  margin-left: 100px;
+}
+.buttonloginb{
+  margin-right: -100px;
+  margin-left: 200px;
+}
+    /* .container{
+      margin-top: -150;
+    } */
+    .box{
+        margin-left: -250px;
+    }
+      @media(max-width:992px){
+      .setleftimg2{
+          margin-top:-470px;
+          width:150px;
+          height:350px;
+          margin-left:240px;
+          border: 5px solid;
+          border-radius: 30px ;
+      } 
+       .setleftimg{
+        
+        border: 5px solid;
+          width:150px;
+          height:300px;
+          margin-left:280px;
+          border-radius: 30px ;
+      } 
+      
+       .setleftimg3{
+        border: 5px solid;
+           margin-top:-290px;
+          width:150px;
+          height:280px;
+          margin-left:440px;
+          border-radius: 30px ;
+      } 
+       .google{
+        margin-right:0px;
+        margin-left:20px;
+        }
+        .emailform{
+            margin-right: 0px;
+            margin-left:5px;
+        }
+        .buttonloginb{
+            margin-right:-50px;
+            margin-left:-25px;
+        }
+        .or{
+          margin-left: 25px;
+        }
+    }
+
+</style>
+
+    <!-- form and button -->
+    <section class="vh-100">
+        <div class="container">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+              <div class="box">
+              <img src="img/green3.png" class="setleftimg3">
+              <img src="img/shop1.png" class="setleftimg">
+              <img src="img/tour2.png" class="setleftimg2">
+         
+    
+              </div>
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <form>
+                  <div class="google">
+                <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+             
+      
+         
+      
+                </div>
+                <div class="or">
+                <div class="divider d-flex align-items-center my-4">
+                  
+                </div>
+              </div>
+      </div>
+      <div class="emailform">
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="text" id="email" class="form-control form-control-lg"
+                    placeholder="Email" />
+                </div>
+                <div id="setpassword">
+                    
+                </div>
+
+                <div id="otpsend">
+
+                </div>
+      
+                <!-- Password input -->
+               
+      
+              
+                </div>
+      <div class="buttonloginb">
+                <div class="text-center text-lg-start mt-4 pt-2">
+                    <div id="buttonOTP">
+                  <button type="button" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;" onclick="sendemail()">Send OTP</button>
+                </div>
+                    
+                  <p class="small fw-bold mt-2 pt-1 mb-0">your have an account? <a href="login30.html"
+                      class="link-danger">Login</a></p> 
+                </div>
+
+                
+      
+              </form>
+            </div>
+          </div>
+        </div>
+        <div
+         
+    
+    
+       
+      
+          <div>
+            <a href="#!" class="text-white me-4">
+              <i class="fa fa-facebook-f"></i>
+            </a>
+            <a href="#!" class="text-white me-4">
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a href="#!" class="text-white me-4">
+              <i class="fa fa-google"></i>
+            </a>
+            <a href="#!" class="text-white">
+              <i class="fa fa-linkedin-in"></i>
+            </a>
+          </div>
+          <!-- Right -->
+        </div>
+      </section>
+
+      <Script src="https://smtpjs.com/v3/smtp.js"></Script>
+
+<script>
+        function sendemail(){
+
+        Email.send({
+            Host:"smtp.elasticemail.com",
+            Username:"sendgmail89@gmail.com",
+            Password:"076D5CECD085B1400F282E452F811399C2CE",
+            To:document.getElementById("email").value,
+            From:'65309010002@kbtc.ac.th',
+            Subject:"HI this is check your email from FLuttersapling",
+            Body:'This is your OTP : '+genelateOTP()
+        }).then(
+            message=>alert('please check otp your gmail spam message\n (กรุณาเช็ค OTP ใน Gmail ของคุณ มันอาจอยู่ในจดหมายขยะ)')
+        );
+    }
+    function genelateOTP(){
+        const otplength=6;
+        let otp="";
+        for(let i =0;i<otplength;i++){
+            otp +=Math.floor(Math.random()*10);
+        }
+        // console.log('this is OTP =',otp)
+        localStorage.setItem('OTP',otp);
+        aa()
+        return otp
+    }
+
+function aa(){
+    OTP1=localStorage.getItem('OTP');
+                var dataStore='';
+                  dataStore +=`
+                  <div class="form-outline mb-4">
+                    <input type="text" id="otpinput" class="form-control form-control-lg"
+                      placeholder="input your OTP" />
+                  </div>
+                  `;
+                  document.getElementById("otpsend").innerHTML=dataStore;
+
+                var button='';
+                button +=`
+                <button type="button" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;" onclick="checkotp()">Resgister</button>`;
+                    document.getElementById("buttonOTP").innerHTML=button;
+
+                var passwordset='';
+               
+                passwordset=`
+                <div class="form-outline mb-4">
+                  <input type="password" id="password" class="form-control form-control-lg"
+                    placeholder="Set your Password" />
+                </div>
+                `;
+                document.getElementById("setpassword").innerHTML=passwordset;
+
+}
+function checkotp(){
+    const email=document.getElementById('email').value;
+    const password=document.getElementById('password').value;
+    const otpinput=document.getElementById('otpinput').value;
+    
+    if(otpinput==OTP1){
+       Swal.fire({
+           icon: 'success',
+           title: 'Regester Send',
+           text: 'Register Complete',
+           // footer: '<a href="">Why do I have this issue?</a>'
+       }).then((result)=>{
+               if(result.isConfirmed){
+                const http= new XMLHttpRequest();
+                http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertuser/"
+                +email+"/"+password+"/"+email+"/"+otpinput);
+                http.send();
+                http.onreadystatechange=function(){
+                    
+                }
+                setTimeout(setstatus(), 3000);
+                   
+                  
+               }
+             })
+       
+    }
+}
+function setstatus(){
+  const email=document.getElementById('email').value;
+                const http= new XMLHttpRequest();
+                http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/autostatus/"+email);
+                http.send();
+                window.location.href="./login30.html";
+}
+
+
+  function insertdata(){
+   
+
+   const email=document.getElementById('email').value;
+   const pass=document.getElementById('pass').value;
+   const name2=document.getElementById('name2').value;
+   const tel=document.getElementById('tel').value;
+   
+   console.log(email);
+   console.log(pass);
+   console.log(name2);
+   console.log(tel);
+   var testmail=  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  //  var testmail =new RegExp('^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+   console.log(testmail);
+
+   
+    if(document.getElementById('email').value=="" && document.getElementById('pass').value==""
+             && document.getElementById('name2').value=="" && document.getElementById('tel').value==""){
+         
+         Swal.fire({
+             icon: 'warning',
+             title: 'All Data is Empty ',
+             text: 'Please input All data as specified',
+             // footer: '<a href="">Why do I have this issue?</a>'
+           })
+ 
+ 
+             }
+  else if(document.getElementById('email').value=="" && document.getElementById('pass').value==""){
+         
+         Swal.fire({
+             icon: 'warning',
+             title: 'Email and Password is empty ',
+             text: 'Please input email and password',
+             // footer: '<a href="">Why do I have this issue?</a>'
+           })
+ 
+ 
+             }
+
+             else if(document.getElementById('email').value=="" ){
+         
+         Swal.fire({
+             icon: 'warning',
+             title: 'Email is empty ',
+             text: 'Please input email',
+             // footer: '<a href="">Why do I have this issue?</a>'
+           })
+ 
+ 
+             }
+
+             else if(document.getElementById('pass').value=="" ){
+         
+         Swal.fire({
+             icon: 'warning',
+             title: 'Password is empty ',
+             text: 'Please input password',
+             // footer: '<a href="">Why do I have this issue?</a>'
+           })
+ 
+ 
+             }
+             else if(document.getElementById('name2').value=="" ){
+         
+         Swal.fire({
+             icon: 'warning',
+             title: 'Name is empty ',
+             text: 'Please input Name',
+             // footer: '<a href="">Why do I have this issue?</a>'
+           })
+ 
+ 
+             }
+             else if(document.getElementById('tel').value=="" ){
+         
+         Swal.fire({
+             icon: 'warning',
+             title: 'Tel is empty ',
+             text: 'Please input Tel',
+             // footer: '<a href="">Why do I have this issue?</a>'
+           })
+ 
+ 
+             }
+
+
+             else if(testmail.test(email)==false ){
+       console.log("ok");
+       Swal.fire({
+           icon: 'error',
+           title: 'Email format Wrong',
+           text: 'please check your email format',
+           // footer: '<a href="">Why do I have this issue?</a>'
+       })
+       
+   }
+
+   else if(testmail.test(email)==true ){
+       console.log("ok");
+       Swal.fire({
+           icon: 'success',
+           title: 'Regester Send',
+           text: 'please wait check data your account',
+           // footer: '<a href="">Why do I have this issue?</a>'
+       }).then((result)=>{
+               if(result.isConfirmed){
+                const http= new XMLHttpRequest();
+                http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertuser/"+email+"/"+pass+"/"+name2+"/"+tel);
+                http.send();
+                http.onreadystatechange=function(){
+              
+                }
+                   window.location.href="./login30.html";
+               }
+             })
+       
+   }
+
+
+   else{
+       Swal.fire({
+           icon: 'error',
+           title: 'Error',
+           text: 'please try again',
+           // footer: '<a href="">Why do I have this issue?</a>'
+       })
+   }
+ 
+}
+</script>
+
+  </body>
+</html>

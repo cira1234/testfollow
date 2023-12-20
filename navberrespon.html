@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link href="navberrespon.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+</head>
+<body>
+    <style>
+        body{
+    height: 100vh;
+    background-color: black;
+    background-image: url('https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1517&q=80');
+    background-size: cover;
+    background-position: center;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+a:hover{
+    color: red;
+}
+header{
+    position: relative;
+    padding: 0 2 rem;
+}
+.navbar{
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    margin: auto ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar .logo a{
+    font-size: 1.5rem;
+    font-weight: bold;
+}  
+.navbar .links{
+    display: flex;
+    gap:2rem;
+}
+.navbar .toggle_btn{
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    /* ซ่อน ใช้ display none
+     */
+
+}
+.action_btn{
+    background-color: orange;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.action_btn:hover{
+    scale: 1.05;
+    color: white;
+}
+.action_btn:active{
+    scale: 0.95;
+}
+/*DROPDOWN MENU*/
+.dropdown_menu{
+    height: 0;
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top:60px;
+    width: 300px;
+    background: rgb(255, 255, 255,0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height 0.2s cubic-bezier(0.175,0.885,0.32,1.275);
+
+}
+.dropdown_menu.open{
+    height: 240px;
+}
+.dropdown_menu li{
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown_menu .action_btn{
+    width: 87%;
+    display: flex;
+    justify-content: center;
+}
+/*Hero*/
+section#hero{
+    height: calc(100vh-60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+#hero h1{
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+/* Responsive phone*/
+@media(max-width:992px){
+    .navbar .links,
+    .navbar .action_btn{
+        display: none;
+    }
+    .navbar .toggle_btn{
+        display: block;
+    }
+    .dropdown_menu{
+        display: block;
+    }
+}
+@media (max-width:576px){
+    .dropdown_menu{
+        left: 2rem;
+        width: unset;
+    }
+}
+ 
+
+
+    </style>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="">webcreative</a></div>
+            <ul class="links ">
+                <li><a href="hero">Home</a></li>
+                <li><a href="about">Home</a></li>
+                <li><a href="services">Home</a></li>
+                <li><a href="contact">Home</a></li>
+            </ul>
+            <a href="#" class="action_btn">getStarted</a>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="dropdown_menu">
+            <li><a href="hero">Home</a></li>
+            <li><a href="about">Home</a></li>
+            <li><a href="services">Home</a></li>
+            <li><a href="contact">Home</a></li>
+            <a href="#" class="action_btn">getStarted</a>
+        </div>
+        
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>Welcome</h1>
+            <p>Lorem ipsum dolor sit amet consectetur <br>
+                adipisicing elit. Dolorum, qui?</p>
+        </section>
+    </main>
+
+    <script>
+        const toggle_btn =document.querySelector('.toggle_btn')
+        const toggle_BtnIcon =document.querySelector('.toggle_btn i')
+        const dropdownmenu =document.querySelector('.dropdown_menu')
+        
+        toggle_btn.onclick = function(){
+            dropdownmenu.classList.toggle('open')
+            const isOpen=dropdownmenu.classList.contains('open')
+
+            toggle_BtnIcon.classList=isOpen
+             ? 'fa-solid fa-xmark'
+             : 'fa-solid fa-bars'
+        }
+    </script>
+
+</body>
+</html>

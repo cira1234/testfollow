@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@7/fonts/Anakotmai/Anakotmai.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- <script src="carddata.js"></script> -->
+    <link href="sidebar.css" rel="stylesheet">
+    <!-- <link href="card.css" rel="stylesheet"> -->
+    <title>Quiz</title>
+    
+
+</head>
+<body>
+    <style>
+     .dropdown_menu{
+           height: 0;
+           display: none;
+           position: absolute;
+           right: 2rem;
+           top:60px;
+           margin-right: 50px;
+           width: 150px;
+           /* background: rgb(255, 255, 255,0.1); */
+           background: rgb(30, 240, 250,0.1);
+           backdrop-filter: blur(15px);
+           border-radius: 20px;
+           overflow: hidden;
+           transition: height 0.2s cubic-bezier(0.175,0.885,0.32,1.275);
+        }
+        .dropdown_menu.open{
+           height: 240px;
+       }
+       .toggle_btn{
+           display: none;
+           position: absolute;
+           right:30px;
+           margin-top: -30px;
+       }
+       
+       </style>
+
+    
+<div class="wrapper">
+
+<div class="sidebar">
+
+    <h3>Dasboard</h3>
+    <ul>
+        <li><a href="meprofile.html"  style="text-decoration:none"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="profileset.html" style="text-decoration:none"><i class="fas fa-user"></i>Profile</a></li>
+        <li><a href="showpost.html" style="text-decoration:none"><i class="fas fa-address-card"></i>Post</a></li>
+        <li><a href="learn.html" style="text-decoration:none"><i  class="fas fa-graduation-cap"></i>Learn</a></li>
+        <li><a href="write.html" style="text-decoration:none"><i class="fas fa-pen"></i>Write</a></li>
+        <li><a href="showquizuser.html" style="text-decoration:none"  class="check"><i  class="fas fa-chalkboard-teacher"></i>Quiz</a></li>
+        <li><a href="assistuser.html" style="text-decoration:none"  ><i  class="fas fa-chalkboard-teacher"></i>Assist</a></li>
+        <li><a onclick="logout()" style="text-decoration:none"><i class='fas fa-sign-out-alt'></i>Logout</a></li>
+    </ul>
+
+</div>
+
+
+<style>
+    
+ .card:hover .card-body{
+        width: 300;
+        height: 150px;
+        background: #0099ff;
+        opacity: 1;
+ }
+    .img1{
+    width: 300px;
+        height: 345px;
+     
+        object-fit: cover;
+     }
+ 
+.card{
+    width: 500px;
+    margin-top: 5rem;
+    height:135px;
+    margin: 50px;
+    box-shadow: 3px 3px 5px grey;
+    border-radius: 0px;
+    overflow: hidden;
+}
+.check{
+  background:#0066ff;
+}
+.margintextquiz{
+    margin-top: 0px;
+}
+@media(max-width:992px){
+    .sidebar{
+        display: none;
+    }
+    .header{
+        margin-left: -200px;
+    }
+    .card{
+        height:160px;
+        width: 280px;
+        margin-left: -185px;
+    }
+    .toggle_btn{
+    position: absolute;
+    right: 20px;
+    margin-top: -25px;
+    }
+    .dropdown_menu{
+        margin-right: -20px;
+        display: block;
+    }
+    .toggle_btn{
+        display: block;
+    }
+    .text_dropdown{
+        margin-left: 40px;
+    }
+    .check{
+      background: orange;
+    }
+}
+</style>
+
+<div class="main_content">
+    <div class="header">Quiz Fluttersapling
+
+        <div class="toggle_btn">
+            <i class="fa-solid fa-bars " ></i>
+        </div>
+    
+    </div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4" id="allvideo">
+    <div class="col">
+            <div class="card" onclick="gochoice()">
+                <div class="card-body">
+                <div class="intro">
+                    <div class="margintextquiz">
+                    <h1>Loading...</h1>
+                 <p>Loading..</p>
+                    </div>
+                </div>
+                
+            </div>
+
+    </div>
+
+
+    
+
+</div>
+ </div>
+ 
+
+ 
+ 
+</div>
+</div>
+
+
+
+
+    
+<div class="dropdown_menu">
+    <div class="text_dropdown"> 
+    <li><a href="meprofile.html"  style="text-decoration:none"  ><i class="fas fa-home"></i>Home</a></li>
+    <li ><a href="profileset.html" style="text-decoration:none"><i class="fas fa-user"></i>Profile</a></li>
+    <li><a href="showpost.html" style="text-decoration:none"><i class="fas fa-address-card"></i>Post</a></li>
+    <li><a href="learn.html" style="text-decoration:none"><i  class="fas fa-graduation-cap"></i>Learn</a></li>
+    <li><a href="write.html" style="text-decoration:none"><i class="fas fa-pen"></i>Write</a></li>
+    <li><a href="showquizuser.html" style="text-decoration:none"  class="check"><i  class="fas fa-chalkboard-teacher"></i>Quiz</a></li>
+    <li><a href="assistuser.html" style="text-decoration:none"  ><i  class="fas fa-chalkboard-teacher"></i>Assist</a></li>
+    <li><a onclick="logout()" style="text-decoration:none"><i class='fas fa-sign-out-alt'></i>Logout</a></li>
+</div>
+</div>
+
+</body>
+</html>
+<script>
+    const toggle_btn =document.querySelector('.toggle_btn')
+       const toggle_BtnIcon =document.querySelector('.toggle_btn i')
+       const dropdownmenu =document.querySelector('.dropdown_menu')
+       
+       toggle_btn.onclick = function(){
+           dropdownmenu.classList.toggle('open')
+           const isOpen=dropdownmenu.classList.contains('open')
+  
+           toggle_BtnIcon.classList=isOpen
+            ? 'fa-solid fa-xmark'
+            : 'fa-solid fa-bars'
+       }
+  </script>
+<script>
+
+function gochoice(object){
+ localStorage.setItem('send-storynameuser',object)
+ window.location.href="./showquiziduser.html";
+}
+
+function gowrite(){
+    window.location.href="./showpost.html";
+}
+
+const emailvalue=localStorage.getItem('email-send');
+    const passvalue=localStorage.getItem('pass-send');
+    const idglobal=localStorage.getItem('idglobal-send');
+    console.log('this is showpost.html')
+    console.log(emailvalue)
+    console.log(passvalue)
+    console.log(idglobal)
+
+    if(emailvalue==null && passvalue==null){
+            window.location.href="./index.html";
+        }
+       console.log(emailvalue)
+        console.log(passvalue)
+       function logout(){
+        console.log('function logout');
+        localStorage.removeItem('email-send')
+        localStorage.removeItem('pass-send')
+        window.location.href="./index.html";
+
+       }
+
+
+
+    allvideo()
+    function allvideo(){
+
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectquizcard");
+http.send();
+http.onreadystatechange=function(){
+    if(this.status !="[]"){
+        objects = JSON.parse(this.responseText);
+        var dataStore ='';
+    for(let object of objects){
+
+        dataStore +=`
+        <div id="allvideo">
+    <div class="col">
+        <div class="card" onclick="gochoice('${object['storyname']}')">
+                <div class="card-body">
+                <div class="intro">
+                    <div class="margintextquiz">
+                    <h1>${object['storyname']}</h1>
+                 <p>${object['textplain']}</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        </div>
+
+
+`;
+
+
+    }
+
+}
+
+    document.getElementById("allvideo").innerHTML=dataStore;
+
+    // document.getElementById("indexdata").innerHTML=dataStore;
+}
+
+}
+
+
+
+function getidvideo(object) {
+    var check=1;
+    
+    
+    console.log(object)
+    localStorage.setItem('idvideo-send',object);
+    window.location.href="./showvideo.html"
+}
+// allmenu()
+</script>

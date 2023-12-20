@@ -1,0 +1,26 @@
+html,body{
+    height: 100%;
+}
+.form-login{
+     max-width: 25rem;
+     margin: auto;
+     /* border: 1px solid grey; */
+     height: 450px;
+     /* background: ghostwhite; */
+     
+}
+body{
+    padding-top:5rem;
+    background-color:white;
+}
+
+.topbutton{
+ 
+    padding-top:20px;
+
+}
+
+
+.inputemail{
+    width: 50px;
+}

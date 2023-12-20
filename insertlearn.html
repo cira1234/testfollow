@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@7/fonts/Anakotmai/Anakotmai.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    
+
+     
+    <!--   -->
+    <script src="domain.js"></script>
+    <link href="sidebar.css" rel="stylesheet">
+    <link href="card.css" rel="stylesheet">
+    <title>Add Learn</title>
+    
+
+</head>
+<body >
+
+
+    
+<div class="wrapper">
+
+<div class="sidebar">
+
+    <h3>Dasboard</h3>
+    <ul>
+        <li><a href="menuadmin.html"  style="text-decoration:none"  ><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="tableuser.html"style="text-decoration:none"><i class="fas fa-user"></i>Regis</a></li>
+        <li><a href="tablemember.html" style="text-decoration:none" ><i class="fas fa-address-book"></i>Users</a></li>
+        <li><a href="learnadmin.html" style="text-decoration:none"><i class="fas fa-graduation-cap"></i>Learn</a></li>
+        <li><a href="insertlearn.html" style="text-decoration:none"  class="check"><i  class="fas fa-graduation-cap"></i>Add+</a></li>
+        <li><a href="inserttest.html" style="text-decoration:none"><i  class="fas fa-chalkboard-teacher"></i>AddQ+</a></li>
+        <li><a href="showquiz.html" style="text-decoration:none"><i  class="fas fa-chalkboard-teacher"></i>Quiz</a></li>
+        <li><a href="inserttypevideo.html" style="text-decoration:none"><i  class="fas fa-chalkboard-teacher"></i>typeV+</a></li>
+        <li><a href="showquiz.html" style="text-decoration:none"><i  class="fas fa-chalkboard-teacher"></i>typeS</a></li>
+        <li><a href="assist.html" style="text-decoration:none"><i  class="fas fa-chalkboard-teacher"></i>Assist</a></li>
+        <li><a href="banuser.html" style="text-decoration:none"><i  class="fas fa-ban"></i>Ban</a></li>
+        <li><a onclick="logout()" style="text-decoration:none"><i class='fas fa-sign-out-alt'></i>Logout</a></li>
+
+    </ul>
+
+</div>
+
+
+<style>
+
+    .img1{
+    width: 300px;
+        height: 345px;
+     
+        object-fit: cover;
+     }
+ 
+.card{
+    width: 300px;
+    margin-top: 5rem;
+    height:345px;
+    margin: 50px;
+    box-shadow: 5px 5px 10px black;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.check{
+  background:#0066ff;
+}
+.setbutton2{
+    margin-top: -10px;
+}
+</style>
+
+<div class="main_content">
+    <div class="header">Insert Video for Learn To FlutterSapling</div>
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4" id="allList">
+    <div class="col">
+        <form method="POST" action="savevideo.php"  enctype="multipart/form-data"  id="uploadFile2">
+        <div class="form-floating mb-3" class="inputemail">
+            <input type="text" class="form-control" id="namevideo" name="email" class="inputemail">
+            <label for="floatingInput">Namevideo</label>
+          </div>
+  
+  
+          <div class="form-floating  mb-3">
+          <input type="text" class="form-control w-100 " id="detail" name="pass" class="inputpassword">
+          <label for="floatingPassword">Textexplain</label>
+          </div>
+          <br>
+        <h5>&nbsp;Type Video</h5>
+          <br>
+
+          <div id="typevideo">
+            <input type="radio" class="setradio" name="testing" id="testing_op1"> Loading..<br><br><br>
+            <input type="radio" class="setradio" name="testing" id="testing_op2"> Loading..<br><br><br>
+            <input type="radio" class="setradio" name="testing" id="testing_op3"> Loading..<br><br><br>
+            <input type="radio" class="setradio" name="testing" id="testing_op4"> Loading..<br><br><br>
+          </div>
+          
+
+
+                <span>select Image video</span>
+                <br>
+                <input type="file" name="uploadimg" id="img" multiple><br>
+                <br>
+
+                <span>select video</span> 
+                <br>
+                <input type="file" name="uploadfile" id="files" multiple><br>
+                <br>
+               
+                <input type="submit"  onclick="insertvideo()"  class="btn btn-primary w-100" class="buttonlogin" name="btn-submit" value="insertvideo">
+               
+</form>
+            </div>
+
+</div>
+</div>
+
+
+<script>
+     var domainweb=localStorage.getItem('send-domain')
+//     function imgname2(){
+//     var a=1;
+    
+//     let file=document.getElementById("files").value;
+//     for(let i=12;i<file.length;i++){
+//         console.log(file[i]);
+      
+//     }
+ 
+//     let namefile=[file[12]+file[13]+file[14]+file[15]+file[16]];
+//     let message = document.getElementById("message");
+// //     for(let i=0 ;i<file.length;i++){
+// //         console.log(file[i]);
+// // }
+//         console.log("this  is name file");
+        
+//         console.log(namefilemulti);
+//         console.log(namefile);
+        
+
+//         if(a==1){
+//             // insertimg(file[i]);
+//         }
+
+        
+    
+// }
+
+i=0
+const emailvalue=localStorage.getItem('email-send');
+       const passvalue=localStorage.getItem('pass-send');
+       const idglobal=localStorage.getItem('idglobal-send');
+  
+       if(emailvalue==null && passvalue==null ){
+       
+            window.location.href="./index.html";
+       }
+       if(emailvalue!="Admin69@gmail.com" && passvalue!="090165"){
+            window.location.href="./index.html";
+       }
+
+       function logout(){
+        console.log('function logout');
+        localStorage.removeItem('email-send')
+        localStorage.removeItem('pass-send')
+        window.location.href="./index.html";
+
+       }
+
+
+       choiceid()
+    function choiceid(){
+
+const http= new XMLHttpRequest();
+http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/selectsearch");
+http.send();
+http.onreadystatechange=function(){
+    if(this.status !="[]"){
+        objects = JSON.parse(this.responseText);
+        var dataStore ='';
+    for(let object of objects){
+        i++
+        dataStore +=`
+        <div id="typevideo">
+            &nbsp;<input type="radio" class="setradio" name="testing" id="testing_op${i}" value="${object['type_video']}">&nbsp;${object['type_video']}<br><br><br>
+          </div>
+          <div class="setbutton2">
+            <button type="button" class="btn btn-primary w-100" onclick="checkanswer('${object['id_type']}')">Select</button>
+            </div>
+          
+       
+
+`;
+
+
+
+    }
+
+}
+
+    document.getElementById("typevideo").innerHTML=dataStore;
+
+    // document.getElementById("indexdata").innerHTML=dataStore;
+}
+
+}
+
+function insertvideo(){
+    console.log('this is function insertvideo')
+    var type=localStorage.getItem('typevideo');
+    var file=document.getElementById("files").value;
+    var img=document.getElementById("img").value;
+    var namefilemulti=file.split('\\').pop().split('/').pop(); 
+    var nameimg=img.split('\\').pop().split('/').pop();     
+    var name=document.getElementById("namevideo").value;
+    var detail=document.getElementById("detail").value;
+    console.log(name)
+    console.log(detail)
+    console.log(namefilemulti)
+    console.log(nameimg)
+
+    const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertvideo/"+name+"/"+detail+"/"+namefilemulti+"/"+nameimg+"/"+type);
+    http.send(); 
+    
+    console.log('insertVideocomplete')
+    // window.location.href=`${domainweb}learnadmin.html`
+}    
+
+
+function insertfile(){
+    
+    const form=document.querySelector('form');
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        const files=document.getElementById("files");
+    console.log("this is file name");
+    console.log(files);
+    const formData = new FormData();
+
+        for (let i=0; i< files.files.length; i++){
+            formData.append("files",files.files[i]);
+        }
+
+
+        console.log("test formdata");
+        console.log(...formData);
+        fetch("https://aggressive-tie-jay.cyclic.app/uploads",{
+            method: 'POST',
+            body:formData,
+        })
+        .then(res => res.json())
+        .then(data => console.log(data));
+    })
+    
+    
+}
+        
+function checkanswer(object){
+    // var detail=document.getElementById("testing_op"+i).value;
+    localStorage.setItem('typevideo',object)
+    console.log(object)
+}
+
+
+$(document).on('submit','#uploadFile2',function(e){
+        e.preventDefault();
+       var formData = new FormData(this);
+        $.ajax({
+        method:"POST",
+        url: "savevideo.php",
+        data:formData,
+        cache:false,
+        contentType: false,
+        processData: false,
+         beforeSend:function(){
+         $('button[type="submit"]').attr('disabled','disabled');
+       },
+        success: function(data){
+       
+        $('button[type="submit"]').removeAttr('disabled');
+       
+         $('#alertBox').html(data).fadeIn();
+      }
+           
+});
+
+      });   
+
+</script>
+
+
+
+    
+</body>
+</html>

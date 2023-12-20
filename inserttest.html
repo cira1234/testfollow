@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@7/fonts/Anakotmai/Anakotmai.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    
+
+     
+    <!--   -->
+    <link href="sidebar.css" rel="stylesheet">
+    <link href="card.css" rel="stylesheet">
+    <title>Add Quiz </title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+
+</head>
+<body >
+
+
+    
+<div class="wrapper">
+
+<div class="sidebar">
+
+    <h3>Dasboard</h3>
+    <ul>
+        <li><a href="menuadmin.html"  style="text-decoration:none"  ><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="tableuser.html"style="text-decoration:none"><i class="fas fa-user"></i>Regis</a></li>
+        <li><a href="tablemember.html" style="text-decoration:none" ><i class="fas fa-address-book"></i>Users</a></li>
+        <li><a href="learnadmin.html" style="text-decoration:none"><i class="fas fa-graduation-cap"></i>Learn</a></li>
+        <li><a href="insertlearn.html" style="text-decoration:none"  ><i  class="fas fa-graduation-cap"></i>Add+</a></li>
+        <li><a href="inserttest.html" style="text-decoration:none" class="check"><i  class="fas fa-chalkboard-teacher"></i>AddQ+</a></li>
+        <li><a href="showquiz.html" style="text-decoration:none"><i  class="fas fa-chalkboard-teacher"></i>Quiz</a></li>
+        <li><a href="inserttypevideo.html" style="text-decoration:none"><i  class="fas fa-chalkboard-teacher"></i>typeV+</a></li>
+        <li><a href="showquiz.html" style="text-decoration:none"><i  class="fas fa-chalkboard-teacher"></i>typeS</a></li>
+        <li><a href="assist.html" style="text-decoration:none"><i  class="fas fa-chalkboard-teacher"></i>Assist</a></li>
+        <li><a href="banuser.html" style="text-decoration:none"><i  class="fas fa-ban"></i>Ban</a></li>
+        <li><a onclick="logout()" style="text-decoration:none"><i class='fas fa-sign-out-alt'></i>Logout</a></li>
+
+    </ul>
+
+</div>
+
+
+<style>
+
+    .img1{
+    width: 300px;
+        height: 345px;
+     
+        object-fit: cover;
+     }
+ 
+.card{
+    width: 300px;
+    margin-top: 5rem;
+    height:345px;
+    margin: 50px;
+    box-shadow: 5px 5px 10px black;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.check{
+  background:#0066ff;
+}
+.marginbox{
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.marginbutton{
+    margin-top: 10px;
+}
+.marginbutton1{
+    margin-top: 50px;
+}
+.marginbutton2{
+    margin-top: 5px;
+    margin-bottom: -20px;
+}
+.marginchoice{
+    margin-top: 50px;
+}
+.red{
+    color: red;
+}
+.margininputchoice{
+    margin-top: -30px;
+    margin-left: 20px;
+}
+.margindeletechoice{
+    margin-top: -20px;
+    margin-left: 20px;
+    
+}
+.marginupload{
+    margin-bottom: 10px;
+}
+.marginline{
+    
+    margin-bottom: 30px;
+}
+
+</style>
+
+<div class="main_content">
+    <div class="header">Insert Quiz for Test To FlutterSapling</div>
+
+<div class="marginbox">
+<div class="row row-cols-1 row-cols-md-3 g-4" id="allList">
+    <div class="col">
+        <!-- <form method="POST" action="./savevideo.php" enctype="multipart/form-data"> -->
+
+            <div class="form-floating mb-3" class="inputemail">
+                <input type="text" class="form-control" id="namecard" name="email" class="inputemail">
+                <label for="floatingInput">Card Name</label>
+              </div>
+
+              <div class="form-floating mb-3" class="inputemail">
+                <input type="text" class="form-control" id="detailcard" name="email" class="inputemail">
+                <label for="floatingInput">Detail</label>
+              </div>
+
+              <div class="form-floating mb-3" class="inputemail">
+                <input type="text" class="form-control" id="maxpoint" name="email" class="inputemail">
+                <label for="floatingInput">Max Point</label>
+              </div>
+              
+              <div class="marginbutton2" id="buttonaddcardwrite">
+                <button   onclick="addcard()"  class="btn btn-primary w-100" class="buttonlogin">Add Card Choice Quiz</button>
+              </div>
+
+              <div class="marginline">
+              <h1>_________________</h1>
+              </div>
+
+        <div class="form-floating mb-3" class="inputemail">
+            <input type="text" class="form-control" id="namequiz" name="email" class="inputemail">
+            <label for="floatingInput">Quiz Name</label>
+          </div>
+
+          <div id="quizimg">
+
+          </div>
+          
+          <div id="quizBox">
+
+          </div>
+
+          <div id="quizBox2">
+
+          </div>
+
+          <div id="quizBox3">
+
+          </div>
+
+          <div id="quizBox4">
+
+          </div>
+
+          <div id="quizBox5">
+
+          </div>
+
+
+
+          <div class="marginbutton1">
+          <button   onclick="addwrite()"  class="btn btn-primary w-100" class="buttonlogin">Add Write Quiz</button>
+        </div>
+
+          <div class="marginbutton">
+          <button   onclick="addchoice()"  class="btn btn-primary w-100" class="buttonlogin">Add Choice Quiz</button>
+        </div>      
+       
+        <div class="marginbutton">
+            <button   onclick="addimgquiz()"  class="btn btn-primary w-100" class="buttonlogin" name="btn-submit">Add image Quiz</button>
+        </div>
+
+        <div class="marginbutton" id="buttoninserttest">
+                <button   onclick="insertchoice()"  class="btn btn-primary w-100" class="buttonlogin" name="btn-submit">insert Quiz Choice</button>
+            </div>
+</form>
+            </div>
+</div>
+</div>
+</div>
+
+
+<script>
+//     function imgname2(){
+//     var a=1;
+    
+//     let file=document.getElementById("files").value;
+//     for(let i=12;i<file.length;i++){
+//         console.log(file[i]);
+      
+//     }
+ 
+//     let namefile=[file[12]+file[13]+file[14]+file[15]+file[16]];
+//     let message = document.getElementById("message");
+// //     for(let i=0 ;i<file.length;i++){
+// //         console.log(file[i]);
+// // }
+//         console.log("this  is name file");
+        
+//         console.log(namefilemulti);
+//         console.log(namefile);
+        
+
+//         if(a==1){
+//             // insertimg(file[i]);
+//         }
+
+        
+    
+// }
+x=1;
+
+
+function addcard(){
+    var storyname=document.getElementById("namecard").value;
+    var detailcard=document.getElementById("detailcard").value;
+    var maxpoint=document.getElementById("maxpoint").value;
+    console.log(storyname)
+    console.log(detailcard)
+    var chioce='choice';
+    localStorage.setItem('sendstoryApi',storyname)
+    const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertcardquiz/"+storyname+"/"+detailcard+"/"+chioce+"/"+storyname+"/"+maxpoint);
+    http.send();
+    window.location.reload(); 
+
+    addmaxpoint(maxpoint)
+}
+function addmaxpoint(){
+
+}
+
+
+function addcardwrite(){
+    var storyname=document.getElementById("namecard").value;
+    var detailcard=document.getElementById("detailcard").value;
+    var maxpoint=document.getElementById("maxpoint").value;
+    console.log(storyname)
+    console.log(detailcard)
+    var chioce='choice';
+    localStorage.setItem('sendstoryApi',storyname)
+    const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertcardwritequiz/"+storyname+"/"+detailcard+"/"+chioce+"/"+storyname+"/"+maxpoint);
+    http.send();
+    window.location.reload(); 
+}
+
+function addimgquiz(){
+    dataStore2=`
+
+    <form  method="post" enctype="multipart/form-data" id="uploadFile">
+       
+  
+
+       <input type="file" name="file"  id="files" multiple><br>
+       <div class="marginupload">
+       <input type="submit" onclick="getcostimg()" class="btn btn-primary w-100" class="buttonlogin" name="btn-post" value="Upload image" >
+       </div>
+       <input type="submit" onclick="deleteimg()" class="btn btn-primary w-100" class="buttonlogin" name="btn-post" value="Delete image" >
+   <!-- </form> -->
+  
+
+</form>
+`;
+document.getElementById("quizimg").innerHTML=dataStore2 ;
+}
+
+
+function deleteimg(){
+    console.log('delete img complete')
+    dataStore2=``;
+document.getElementById("quizimg").innerHTML=dataStore2 ;
+    localStorage.removeItem('imgglobal-send')
+}
+
+function getcostimg(){
+    console.log('this get cost img')
+     var img=document.getElementById("files").value;
+    var namefilemulti=img.split('\\').pop().split('/').pop();
+    localStorage.setItem('imgglobal-send',namefilemulti);
+    console.log(namefilemulti);
+        
+ 
+}
+
+function addchoice(){
+
+    // x++
+
+   
+     
+
+     
+     
+        console.log('this cost X')
+        console.log(x);
+
+  //get all users as "parsedJSON" array
+  if(x==1) {
+
+    console.log('if')
+    dataStore=`
+    <input type="radio" class="setradio" name="testing1" value="1" id="radio1"><div class="margininputchoice"><input type="text" class="form-control" id="chioce1" name="email" class="inputemail"></div><br>
+    <div class="margindeletechoice"><button   onclick="deletechoice(${x})"  class="btn btn-primary w-100" class="buttonlogin">Delete Choice</button></div><br><br>
+     
+     
+     `;
+     document.getElementById("quizBox").innerHTML=dataStore ;
+     x++
+    
+  }
+  else if(x==2){
+    x++
+    console.log("else");
+    dataStore2=`
+
+   
+    <input type="radio" class="setradio" name="testing1" value="2"  id="radio2"><div class="margininputchoice"><input type="text" class="form-control" id="chioce2" name="email" class="inputemail"></div><br>
+    <div class="margindeletechoice"><button   onclick="deletechoice(${x})"  class="btn btn-primary w-100" class="buttonlogin">Delete Choice</button></div><br><br>
+
+     
+     `;
+     document.getElementById("quizBox2").innerHTML=dataStore2 ;
+
+  }
+
+  else if(x==3){
+    x++
+    console.log("else");
+    dataStore2=`
+    <input type="radio" class="setradio" name="testing1" value="3"  id="radio3"><div class="margininputchoice"><input type="text" class="form-control" id="chioce3" name="email" class="inputemail"></div><br>
+    <div class="margindeletechoice"><button   onclick="deletechoice(${x})"  class="btn btn-primary w-100" class="buttonlogin">Delete Choice</button></div><br><br>
+
+   
+     
+     `;
+     document.getElementById("quizBox3").innerHTML=dataStore2 ;
+
+  }
+
+  else if(x==4){
+    x++
+    console.log("else");
+    dataStore2=`
+    <input type="radio" class="setradio" name="testing1" value="4"  id="radio4"><div class="margininputchoice"><input type="text" class="form-control" id="chioce4" name="email" class="inputemail"></div><br>
+    <div class="margindeletechoice"><button   onclick="deletechoice(${x})"  class="btn btn-primary w-100" class="buttonlogin">Delete Choice</button></div><br><br>
+
+
+
+     
+     `;
+     document.getElementById("quizBox4").innerHTML=dataStore2 ;
+    
+
+  }
+  else if(x>4){
+    dataStore2=`
+    <div class="red">Please use choice is not Over 4</div>
+    `;
+
+    document.getElementById("quizBox5").innerHTML=dataStore2 ;
+  }
+ 
+
+
+}
+
+
+function insertchoice(){
+    imgglobal2=localStorage.getItem('imgglobal-send');
+    console.log('insert choice')
+    var chioce='choice';
+    storyname=localStorage.getItem('sendstoryApi')
+    var namequiz=document.getElementById("namequiz").value;
+    var chioce1=document.getElementById("chioce1").value;
+    var chioce2=document.getElementById("chioce2").value;
+    var chioce3=document.getElementById("chioce3").value;
+    var chioce4=document.getElementById("chioce4").value;
+
+    if(document.getElementById('radio1').checked == true){
+        var op1=chioce1;
+        console.log('this op1 in if')
+        console.log(op1);
+    }
+    else if(document.getElementById('radio2').checked == true){
+        var op1=chioce2;
+        console.log('this op2 in if')
+        console.log(op1);
+    }
+    else if(document.getElementById('radio3').checked == true){
+        var op1=chioce3;
+        console.log('this op3 in if')
+        console.log(op1);
+    }
+    else if(document.getElementById('radio4').checked == true){
+        var op1=chioce4;
+        console.log('this op4 in if')
+        console.log(op1);
+    }
+    // var img=document.getElementById("files").value;
+    // var namefilemulti=img.split('\\').pop().split('/').pop();
+    if(imgglobal2==null){
+            var defaultimg='default.jpg';
+            const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertquiznoimg/"+namequiz+"/"+defaultimg+"/"+chioce+"/"+op1+"/"+chioce1+"/"+chioce2+"/"+chioce3+"/"+chioce4+"/"+storyname);
+    http.send();
+    window.location.reload();
+        }
+    else if(imgglobal2!=null){
+            const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertquiznoimg/"+namequiz+"/"+defaultimg+"/"+chioce+"/"+op1+"/"+chioce1+"/"+chioce2+"/"+chioce3+"/"+chioce4+"/"+storyname);
+    http.send();
+    window.location.reload();
+    }
+    console.log(namequiz)
+    console.log(imgglobal2)
+    console.log(chioce1)
+    console.log(chioce2)
+    console.log(chioce3)
+    console.log(chioce4)
+    console.log(op1)
+    // console.log(img)
+    // console.log(namefilemulti)
+
+
+    
+    
+    console.log('insertchoicecomplete')
+}
+
+function deletechoice(x){
+        // x--;
+        console.log('delete choice');
+        console.log(x);
+
+        if(x==1) {
+
+console.log('if')
+dataStore=`
+
+ 
+ `;
+ document.getElementById("quizBox").innerHTML=dataStore ;
+ x--
+ window.location.reload();  
+}
+else if(x==2){
+x--
+console.log("else");
+dataStore2=`
+
+
+
+
+ 
+ `;
+ document.getElementById("quizBox").innerHTML=dataStore2 ;
+ window.location.reload();  
+}
+
+else if(x==3){
+x--
+console.log("else");
+dataStore2=`
+
+
+ 
+ `;
+ document.getElementById("quizBox2").innerHTML=dataStore2 ;
+
+}
+
+else if(x==4){
+x--
+console.log("else 4");
+dataStore2=`
+
+
+
+ 
+ `;
+ document.getElementById("quizBox3").innerHTML=dataStore2 ;
+
+
+}
+
+else if(x==5){
+    x--
+    dataStore2=`
+
+
+
+ 
+ `;
+ document.getElementById("quizBox4").innerHTML=dataStore2 ;
+
+}
+else if(x>=5){
+x--
+console.log("else");
+dataStore2=`
+
+
+
+ 
+ `;
+ document.getElementById("quizBox5").innerHTML=dataStore2 ;
+
+
+}
+
+
+}
+
+     
+
+
+
+function addwrite(){
+
+// x++
+buttonwritecard=`<div class="marginbutton2" id="buttonaddcardwrite">
+                <button   onclick="addcardwrite()"  class="btn btn-primary w-100" class="buttonlogin">Add Card Write Quiz</button>
+              </div> `;
+              document.getElementById("buttonaddcardwrite").innerHTML=buttonwritecard;
+
+buttonwrite=`<div class="marginbutton" id="buttoninserttest">
+                <button   onclick="insertwrite()"  class="btn btn-primary w-100" class="buttonlogin" name="btn-submit">insert Quiz Write</button>
+            </div>
+            `;
+            document.getElementById("buttoninserttest").innerHTML=buttonwrite ;
+ 
+    console.log('this cost X')
+    console.log(x);
+    console.log('button write on')
+
+//get all users as "parsedJSON" array
+if(x==1) {
+
+console.log('if')
+dataStore=`
+<div class="form-floating mb-3" class="inputemail">
+            <input type="text" class="form-control" id="namevideo1" name="email" class="inputemail">
+            <label for="floatingInput">Write Quiz</label>
+          </div>
+<div class="margindeletechoice"><button   onclick="deletechoice(${x})"  class="btn btn-primary w-100" class="buttonlogin">Delete Choice</button></div><br><br>
+ 
+ 
+ `;
+ document.getElementById("quizBox").innerHTML=dataStore ;
+ x++
+
+}
+else if(x==2){
+x++
+console.log("else");
+dataStore2=`
+
+
+<div class="form-floating mb-3" class="inputemail">
+            <input type="text" class="form-control" id="namevideo2" name="email" class="inputemail">
+            <label for="floatingInput">Write Quiz</label>
+          </div>
+<div class="margindeletechoice"><button   onclick="deletechoice(${x})"  class="btn btn-primary w-100" class="buttonlogin">Delete Choice</button></div><br><br>
+
+ 
+ `;
+ document.getElementById("quizBox2").innerHTML=dataStore2 ;
+
+}
+
+else if(x==3){
+x++
+console.log("else");
+dataStore2=`
+<div class="form-floating mb-3" class="inputemail">
+            <input type="text" class="form-control" id="namevideo3" name="email" class="inputemail">
+            <label for="floatingInput">Write Quiz</label>
+          </div>
+<div class="margindeletechoice"><button   onclick="deletechoice(${x})"  class="btn btn-primary w-100" class="buttonlogin">Delete Choice</button></div><br><br>
+
+
+ 
+ `;
+ document.getElementById("quizBox3").innerHTML=dataStore2 ;
+
+}
+
+else if(x==4){
+x++
+console.log("else");
+dataStore2=`
+<div class="form-floating mb-3" class="inputemail">
+            <input type="text" class="form-control" id="namevideo4" name="email" class="inputemail">
+            <label for="floatingInput">Write Quiz</label>
+          </div>
+<div class="margindeletechoice"><button   onclick="deletechoice(${x})"  class="btn btn-primary w-100" class="buttonlogin">Delete Choice</button></div><br><br>
+
+
+
+ 
+ `;
+ document.getElementById("quizBox4").innerHTML=dataStore2 ;
+
+
+}
+else if(x>4){
+dataStore2=`
+<div class="red">Please use choice is not Over 4</div>
+`;
+
+document.getElementById("quizBox5").innerHTML=dataStore2 ;
+}
+
+
+
+}
+function insertwrite(){
+    imgglobal2=localStorage.getItem('imgglobal-send');
+    console.log('insert choice')
+    var write='writequiz';
+    storyname=localStorage.getItem('sendstoryApi')
+    var namequiz=document.getElementById("namequiz").value;
+    var chioce1=document.getElementById("namevideo1").value;
+    // var chioce2=document.getElementById("namevideo2").value;
+    // var chioce3=document.getElementById("namevideo3").value;
+    // var chioce4=document.getElementById("namevideo4").value;
+
+    // if(document.getElementById('radio1').checked == true){
+    //     var op1=chioce1;
+    //     console.log('this op1 in if')
+    //     console.log(op1);
+    // }
+    // else if(document.getElementById('radio2').checked == true){
+    //     var op1=chioce2;
+    //     console.log('this op2 in if')
+    //     console.log(op1);
+    // }
+    // else if(document.getElementById('radio3').checked == true){
+    //     var op1=chioce3;
+    //     console.log('this op3 in if')
+    //     console.log(op1);
+    // }
+    // else if(document.getElementById('radio4').checked == true){
+    //     var op1=chioce4;
+    //     console.log('this op4 in if')
+    //     console.log(op1);
+    // }
+    // var img=document.getElementById("files").value;
+    // var namefilemulti=img.split('\\').pop().split('/').pop();
+    console.log('choice1 write = ',chioce1);
+    console.log(namequiz)
+    console.log(imgglobal2)
+    if(imgglobal2==null){
+            var defaultimg='default.jpg';
+            const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertquizwritenoimg/"
+    +namequiz+"/"+defaultimg+"/"+write+"/"+chioce1+"/"+storyname);
+    http.send();
+    // window.location.reload();
+        }
+    else if(imgglobal2!=null){
+        const http= new XMLHttpRequest();
+    http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertquizwrite/"
+    +namequiz+"/"+imgglobal2+"/"+chioce+"/"+chioce1+"/"+storyname);
+    http.send();
+    // window.location.reload();
+    }
+   
+    // console.log(chioce1)
+    // console.log(chioce2)
+    // console.log(chioce3)
+    // console.log(chioce4)
+    // console.log(op1)
+    // console.log(img)
+    // console.log(namefilemulti)
+
+}
+
+
+
+
+
+const emailvalue=localStorage.getItem('email-send');
+       const passvalue=localStorage.getItem('pass-send');
+       const idglobal=localStorage.getItem('idglobal-send');
+  
+       if(emailvalue==null && passvalue==null ){
+       
+            window.location.href="./index.html";
+       }
+       if(emailvalue!="Admin69@gmail.com" && passvalue!="090165"){
+            window.location.href="./index.html";
+       }
+
+       function logout(){
+        console.log('function logout');
+        localStorage.removeItem('email-send')
+        localStorage.removeItem('pass-send')
+        window.location.href="./index.html";
+
+       }
+
+
+function insertvideo(){
+    console.log('this is function insertvideo')
+
+    var file=document.getElementById("files").value;
+    var img=document.getElementById("img").value;
+    var namefilemulti=file.split('\\').pop().split('/').pop(); 
+    var nameimg=img.split('\\').pop().split('/').pop();     
+    var name=document.getElementById("namevideo").value;
+    var detail=document.getElementById("detail").value;
+    console.log(name)
+    console.log(detail)
+    console.log(namefilemulti)
+    console.log(nameimg)
+
+    const http= new XMLHttpRequest();
+    http.open("GET","https://aggressive-tie-jay.cyclic.app/insertvideo/"+name+"/"+detail+"/"+namefilemulti+"/"+nameimg);
+    http.send(); 
+    
+    console.log('insertVideocomplete')
+
+}
+
+function insertfile(){
+    
+    const form=document.querySelector('form');
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        const files=document.getElementById("files");
+    console.log("this is file name");
+    console.log(files);
+    const formData = new FormData();
+
+        for (let i=0; i< files.files.length; i++){
+            formData.append("files",files.files[i]);
+        }
+
+
+        console.log("test formdata");
+        console.log(...formData);
+        fetch("https://aggressive-tie-jay.cyclic.app/uploads",{
+            method: 'POST',
+            body:formData,
+        })
+        .then(res => res.json())
+        .then(data => console.log(data));
+    })
+    
+    
+}
+        
+
+
+
+function editimgpage(){
+    console.log("this is function editimgpage");
+    // console.log(object);
+
+    Swal.fire({
+  position: 'center',
+ 
+  html:`
+      
+  <form  method="post" enctype="multipart/form-data" id="uploadFile">
+       
+  
+
+                <input type="file" name="file"  id="files" multiple><br>
+                <input type="submit" onclick="insertchoice()" class="btn btn-primary w-100" class="buttonlogin" name="btn-post" value="Upload image" >
+               
+            <!-- </form> -->
+           
+        
+        </form>
+        <div id="result"></div>
+ </div>
+
+</div>
+</div>
+
+
+    </div>
+        
+        
+        `,
+  showConfirmButton: false,
+//   timer: 1500
+})
+
+}
+
+$(document).on('submit','#uploadFile',function(e){
+        e.preventDefault();
+       var formData = new FormData(this);
+        $.ajax({
+        method:"POST",
+        url: "saveimg2.php",
+        data:formData,
+        cache:false,
+        contentType: false,
+        processData: false,
+         beforeSend:function(){
+         $('button[type="submit"]').attr('disabled','disabled');
+       },
+        success: function(data){
+       
+        $('button[type="submit"]').removeAttr('disabled');
+       
+         $('#alertBox').html(data).fadeIn();
+      }
+           
+});
+
+      });   
+
+
+</script>
+
+
+
+    
+</body>
+</html>

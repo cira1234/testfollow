@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@7/fonts/Anakotmai/Anakotmai.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    
+
+     
+    <!--   -->
+    <link href="sidebar.css" rel="stylesheet">
+    <link href="card.css" rel="stylesheet">
+    <title>Learning</title>
+    
+
+</head>
+<body >
+
+
+    
+<div class="wrapper">
+
+<div class="sidebar">
+
+    <h3>Dasboard</h3>
+    <ul>
+        <li><a href="meprofile.html"  style="text-decoration:none"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="profileset.html" style="text-decoration:none"><i class="fas fa-user"></i>Profile</a></li>
+        <li><a href="showpost.html" style="text-decoration:none" ><i class="fas fa-address-card"></i>All Post</a></li>
+        <li><a href="#" style="text-decoration:none" class="check"><i  class="fas fa-graduation-cap"></i>Add+</a></li>
+        <li><a href="#" style="text-decoration:none"><i class="fas fa-blog"></i>Blogs</a></li>
+        <li><a href="#" style="text-decoration:none"><i class="fas fa-address-book"></i>Con</a></li>
+        <li><a href="#" style="text-decoration:none"><i class="fas fa-map-pin"></i>Map</a></li>
+    </ul>
+
+</div>
+
+
+<style>
+
+    .img1{
+    width: 300px;
+        height: 345px;
+     
+        object-fit: cover;
+     }
+ 
+.card{
+    width: 300px;
+    margin-top: 5rem;
+    height:345px;
+    margin: 50px;
+    box-shadow: 5px 5px 10px black;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.check{
+  background:#0066ff;
+}
+</style>
+
+<div class="main_content">
+    <div class="header">Welcome To FlutterSapling</div>
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4" id="allList">
+    <div class="col">
+        <form method="POST" action="saveimg.php" enctype="multipart/form-data">
+
+        <div class="form-floating mb-3" class="inputemail">
+            <input type="text" class="form-control" id="namevideo" name="email" class="inputemail">
+            <label for="floatingInput">Namevideo</label>
+          </div>
+  
+  
+          <div class="form-floating  mb-3">
+          <input type="text" class="form-control w-100 " id="detail" name="pass" class="inputpassword">
+          <label for="floatingPassword">Textexplain</label>
+          </div>
+  
+
+                <input type="file" name="fileaa" id="files" multiple><br>
+                <button type="submit" onclick="insertvideo(),insertfile()" class="btn btn-primary w-100" class="buttonlogin">insert video</button>
+            </form>
+ </div>
+
+</div>
+</div>
+
+
+<script>
+//     function imgname2(){
+//     var a=1;
+    
+//     let file=document.getElementById("files").value;
+//     for(let i=12;i<file.length;i++){
+//         console.log(file[i]);
+      
+//     }
+ 
+//     let namefile=[file[12]+file[13]+file[14]+file[15]+file[16]];
+//     let message = document.getElementById("message");
+// //     for(let i=0 ;i<file.length;i++){
+// //         console.log(file[i]);
+// // }
+//         console.log("this  is name file");
+        
+//         console.log(namefilemulti);
+//         console.log(namefile);
+        
+
+//         if(a==1){
+//             // insertimg(file[i]);
+//         }
+
+        
+    
+// }
+
+
+function insertvideo(){
+    var file=document.getElementById("files").value;
+    var namefilemulti=file.split('\\').pop().split('/').pop();   
+    var name=document.getElementById("namevideo").value;
+    var detail=document.getElementById("detail").value;
+
+    const http= new XMLHttpRequest();
+    http.open("GET","https://lavender-blackbuck-gear.cyclic.app/insertvideo/"+name+"/"+detail+"/"+namefilemulti);
+    http.send(); 
+
+}
+
+function insertfile(){
+    
+    const form=document.querySelector('form');
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        const a=document.getElementById("files");
+        const endpoint ="https://github.com/cira1234/apifluttersapling/tree/main/uploads";
+        let h=new Headers();
+        // h.append('Accept,'application/json');
+        const formData = new FormData();
+
+        console.log(a.files);
+        formData.append("files",a.files[0]);
+        fetch(endpoint,{
+            method: "post",
+            body:formData,
+            header:{
+                'Access-Control-Allow-Origin':'*',
+            },
+            mode:"cors",
+
+        }).catch(console.error);
+    })
+    
+    
+}
+        
+
+
+</script>
+    
+    
+</body>
+</html>

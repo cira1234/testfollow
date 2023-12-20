@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="login.css" rel="stylesheet">
+    <!-- <script src="carddata.js"></script> -->
+    <title>Register</title>
+  </head>
+  <body class="text-center">
+
+<style>
+    body{
+    padding-top:1rem;
+    background-color:white;
+}
+.buttonlogin{
+ 
+ padding-top:20px;
+ height: 50px;
+
+}
+
+</style>
+
+    <!-- form and button -->
+    <form>
+    <div class="form-login">
+        <img src="img/logo.png" width="80%">
+   
+        <div class="form-floating mb-3" class="inputemail">
+          <input type="email" class="form-control" id="email" name="email" class="inputemail">
+          <label for="floatingInput">Email address</label>
+        </div>
+
+
+        <div class="form-floating  mb-3">
+        <input type="password" class="form-control w-100 " id="pass" name="pass" class="inputpassword">
+        <label for="floatingPassword">Password</label>
+        </div>
+
+        <div class="form-floating mb-3" class="inputemail">
+            <input type="text" class="form-control" id="name2" name="name2" class="inputname">
+            <label for="floatingInput">Name Surname</label>
+          </div>
+
+
+          <div class="form-floating mb-3" class="inputemail">
+            <input type="text" class="form-control" id="tel" name="tel" class="tel">
+            <label for="floatingInput">Tel</label>
+          </div>
+
+        
+
+        
+
+   
+  
+
+
+        <div class="topbutton">
+         <button onclick="insertdata()" class="btn btn-primary w-100" class="buttonlogin">Register</button>
+        </div> 
+     
+    </div>
+    </form>
+
+<script>
+  function insertdata(){
+   
+
+   const email=document.getElementById('email').value;
+   const pass=document.getElementById('pass').value;
+   const name2=document.getElementById('name2').value;
+   const tel=document.getElementById('tel').value;
+   
+   console.log(email);
+   console.log(pass);
+   console.log(name2);
+   console.log(tel);
+   var testmail=  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  //  var testmail =new RegExp('^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+   console.log(testmail);
+   if(testmail.test(email)){
+       console.log("ok");
+       Swal.fire({
+           icon: 'success',
+           title: 'Register Send',
+           text: 'please wait check account data',
+           // footer: '<a href="">Why do I have this issue?</a>'
+       }).then((result)=>{
+               if(result.isConfirmed){
+                const http= new XMLHttpRequest();
+                http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertuser/"+email+"/"+pass+"/"+name2+"/"+tel);
+                http.send();
+                http.onreadystatechange=function(){
+              
+                }
+                   window.location.href="./login.html";
+               }
+             })
+       
+   }
+   else{
+       Swal.fire({
+           icon: 'error',
+           title: 'Error',
+           text: 'please use true email',
+           // footer: '<a href="">Why do I have this issue?</a>'
+       })
+   }
+ 
+}
+</script>
+
+  </body>
+</html>

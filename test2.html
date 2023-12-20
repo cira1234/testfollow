@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AJAX File Upload</title>
+</head>
+<body>
+
+<form  method="post" enctype="multipart/form-data" >
+
+    <input type="file" name="file">
+    <input type="submit" value="Upload Now" name="submit">
+</form>
+
+<div id="alerBox"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="ajax-script.js"></script>
+</body>
+</html> 
+<script>
+//       $(document).on('submit','#uploadFile',function(e){
+//         e.preventDefault();
+//        var formData = new FormData(this);
+//         $.ajax({
+//         method:"POST",
+//         url: "saveimg2.php",
+//         data:formData,
+//         cache:false,
+//         contentType: false,
+//         processData: false,
+//          beforeSend:function(){
+//          $('button[type="submit"]').attr('disabled','disabled');
+//        },
+//         success: function(data){
+       
+//         $('button[type="submit"]').removeAttr('disabled');
+       
+//          $('#alertBox').html(data).fadeIn();
+//       }
+           
+// });
+//       });
+</script>
