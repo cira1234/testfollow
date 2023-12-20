@@ -279,14 +279,15 @@ console.log("this is function datainsertpost");
                //  http.open("GET","https://aggressive-tie-jay.cyclic.app/selectuser");
                  http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertpost/"+section+"/"+question+"/"+namefilepost+"/"+id2);
                  http.send();
-                 window.location.href="meprofile.html"
+                 setTimeout(() => { window.location.href="meprofile.html" }, 2000);
             }
         else  if(namefilepost==""){
                 const http= new XMLHttpRequest();
                //  http.open("GET","https://aggressive-tie-jay.cyclic.app/selectuser");
                  http.open("GET","https://good-cyan-reindeer-ring.cyclic.cloud/insertpostnoimg/"+section+"/"+question+"/"+id2);
                  http.send();
-                 window.location.href="meprofile.html"
+                 
+             setTimeout(() => { window.location.href="meprofile.html" }, 2000);
             }
          
 
